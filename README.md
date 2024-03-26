@@ -1,4 +1,4 @@
-# ASP.Net_Project_EcommercePlatform - NYAB Not Your Average Bicep
+# ASP.Net_Project_EcommerceApp - NYAB Not Your Average Bicep
 
 ## Project Description
 - This ASP.Net Project is a Gym Product Ecommerce platform featuring REST APIs for managing products, carts, and orders, alongside a web-based UI client.
