@@ -1,0 +1,138 @@
+﻿- DbContext
+
+In the context of Entity Framework Core (EF Core), a DbContext is a crucial component that acts as a bridge between your 
+domain or entity classes and the database. It represents a session with the database, allowing you to query and save data.
+
+Here are key aspects of a DbContext:
+
+	Data Access: 
+		DbContext provides a set of methods to interact with the database, including querying, inserting, updating, and deleting data.
+
+	Entity Management: 
+		It tracks changes to entities and manages their state during the application's lifecycle. This includes tracking which entities are added, 
+		modified, or deleted.
+
+	Configuration: 
+		DbContext is responsible for configuring how your domain classes map to database tables. This includes specifying relationships, 
+		column names, and other database-specific configurations.
+
+	Connection Management: 
+		It manages the connection to the database, including opening and closing connections as needed.
+
+	Transaction Management: 
+		DbContext allows you to work with transactions, ensuring that multiple database operations can be grouped together and 
+		committed or rolled back atomically.
+
+In summary, a DbContext in Entity Framework Core is a central component that provides a high-level abstraction for interacting with a 
+database, simplifying data access and management tasks within your application.
+
+
+- Scaffolding 
+
+In the context of software development and specifically Entity Framework Core, scaffolding refers to the automated generation of code or 
+files based on an existing structure or template.
+
+When you scaffold a DbContext and entity classes from an existing database, as in the provided line of code, it means that Entity 
+Framework Core will examine the structure of the database (tables, columns, relationships) and generate corresponding C# classes for each 
+table (entity classes) along with a DbContext class that represents the database context. The process of scaffolding involves inspecting the 
+database schema and automatically generating code that reflects that schema. This saves developers time and effort by eliminating the need to 
+manually write repetitive boilerplate code for database interactions.
+
+Overall, scaffolding in this context streamlines the process of integrating an existing database with an Entity Framework Core application 
+by automating the creation of necessary code artifacts.
+Example:
+Scaffold-DbContext 'Data Source=DESKTOP-DQUSH87; Initial Catalog=BooksAlpha; Integrated Security=sspi; TrustServerCertificate=True;' Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+	Scaffold-DbContext: 
+		This command is used in Entity Framework Core to generate C# entity classes (models) and a DbContext based on an existing database schema.
+
+	'Data Source=DESKTOP-DQUSH87; Initial Catalog=BooksAlpha; Integrated Security=sspi; TrustServerCertificate=True;': 
+		This part specifies the connection string to the SQL Server database. It includes details such as the server name (DESKTOP-DQUSH87), 
+		the database name (BooksAlpha), and authentication options (Integrated Security=sspi for Windows authentication).
+
+	Microsoft.EntityFrameworkCore.SqlServer: 
+		This indicates that the target database is Microsoft SQL Server, so Entity Framework Core should use the SQL Server provider for 
+		generating the DbContext and entity classes.
+
+	-OutputDir Models: 
+		This parameter specifies the directory (Models) where the generated entity classes should be saved. In this case, the generated classes will be 
+		placed in a folder named "Models".
+
+- Removing OnConfiguring() method and no args constructor in Context Class:
+
+	There are several reasons why you might want to comment out the no-args constructor and the optionsBuilder.UseSqlServer call 
+	in favor of using appsettings.json:
+
+	OnConfiguring()
+		Separation of Concerns: 
+			By using appsettings.json, you separate the configuration of your application (including database connection strings) 
+			from your code. This adheres to the principle of separating configuration from code, making your application more modular and easier to maintain.
+
+		Configuration Flexibility: 
+			appsettings.json allows you to define multiple configurations for different environments (such as development, staging, and 
+			production). This flexibility makes it easier to manage and deploy your application across different environments without modifying your code.
+
+		Security: 
+			Storing sensitive information such as connection strings in code can pose security risks, especially if the code is shared or 
+			stored in version control systems. Storing configuration in appsettings.json allows you to manage sensitive information more 
+			securely, such as using environment variables or Azure Key Vault.
+
+		Ease of Deployment: 
+			Using appsettings.json simplifies the deployment process since you don't need to recompile your code to change 
+			configuration settings. You can simply update the appsettings.json file on the target environment without touching your codebase.
+
+		
+
+	No-Args Constructor:
+	
+		Constructor Dependency Injection: 
+			In Entity Framework Core, it's common practice to use constructor injection to provide dependencies to your DbContext class. 
+			This ensures that required services, such as the DbContextOptions, are available when the DbContext is instantiated.
+
+		DbContext Initialization: 
+			When using constructor injection, Entity Framework Core expects a constructor that accepts DbContextOptions as a parameter. 
+			This constructor is used internally by EF Core to initialize the DbContext and configure its behavior, such as specifying the 
+			database provider and connection string.
+
+		Interference with Scaffolding: 
+			When scaffolding DbContext and entity classes from an existing database, Entity Framework Core generates a no-args constructor 
+			in the DbContext class by default. However, if you're configuring the DbContext to use options from appsettings.json instead of 
+			hardcoding them in the DbContext class, the no-args constructor becomes unnecessary and can potentially interfere with the correct 
+			initialization of the DbContext.
+
+		Avoiding Confusion: 
+			Commenting out the no-args constructor serves to prevent confusion and ensure that the DbContext is always initialized correctly 
+			using the constructor that accepts DbContextOptions. This helps maintain consistency and clarity in your codebase, especially 
+			when working in a team or collaborating with other developers.
+
+- Adding DbContext to builder.Services in program file
+    builder.Services.AddDbContext<AspNETCoreApp.Models.ProductsNyabContext>(
+        options =>
+        {
+            options.UseSqlServer(builder.Configuration.GetConnectionString("CRUDConnection"));
+        });
+
+	The purpose of the provided code is to configure and register the ProductsNyabContext DbContext class with the dependency 
+	injection container in an ASP.NET Core application.
+
+	Here's a breakdown of what each part of the code does:
+
+		builder.Services.AddDbContext<AspNETCoreApp.Models.ProductsNyabContext>: 
+			This line registers the BooksAlphaContext class with the dependency injection container. 
+			It tells the application to provide instances of ProductsNyabContext whenever it's requested via dependency injection.
+
+		(options => { options.UseSqlServer(builder.Configuration.GetConnectionString("CRUDConnection")); }): 
+			This part is a lambda expression that configures the options for the ProductsNyabContext DbContext. 
+			
+			Within the lambda expression:
+				options: 
+				Represents the DbContextOptionsBuilder instance, which allows configuration of the DbContext.
+				
+				UseSqlServer(builder.Configuration.GetConnectionString("CRUDConnection")): 
+				Configures the DbContext to use SQL Server as the database provider and specifies the connection 
+				string to be used. It retrieves the connection string named "CRUDConnection" from the application's 
+				configuration (appsettings.json) using the GetConnectionString method.
+	
+	In Summary, it allow us to tell the application to provide instances of ProductsNyabContext whenever it's requested 
+	via dependency injection for instance in Controller when we need to DbContext to interface with the Database doing 
+	CRUD functions. This is showcased when we pass in ProductsNyabContext in the Controller's constructor.

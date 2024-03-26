@@ -1,0 +1,31 @@
+﻿1. Define the API Controller Annotation for the controller
+		[Route("api/[controller]")]
+		[ApiController]
+
+	By adding these attributes to a controller, you define its route structure 
+	([Route]) and specify that it is an API controller ([ApiController]), which 
+	enables various API-related features and conventions in ASP.NET Core.
+
+		Route("api/[controller]")]: 
+			This attribute specifies the route template for the controller. In this case, it uses a 
+			placeholder [controller], which ASP.NET Core replaces with the controller's name (minus the 
+			"Controller" suffix). So, if you have a controller named ProductsController, the route template 
+			becomes api/products. This means that HTTP requests targeting this route will be directed to 
+			actions within this controller.
+
+		[ApiController]: 
+			This attribute decorates the controller class and indicates that it is an API controller. 
+			It provides built-in behavior for handling common API-related tasks, such as model validation, 
+			automatic HTTP 400 responses for invalid requests, binding source parameter inference, and more. 
+			Essentially, it enables features that are specific to building APIs in ASP.NET Core, making it 
+			easier to develop RESTful services.
+
+2. Define a readonly DbContext field and instantiate using Constructor
+	With the AddDbContext set up in program file, ProductsNyabContext is dependency injected into this constructor
+	whenever we call it.
+
+3. Create custom CRUD functions
+
+
+
+

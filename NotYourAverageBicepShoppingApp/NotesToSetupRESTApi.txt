@@ -1,0 +1,61 @@
+﻿Entity Framework Core Database First approach. Please refer to the Scheme file titled - NYAB_DB_Schema.
+
+Steps:
+
+1. Download Necessary packages
+	- Microsoft.EntityFrameworkCore
+        This package allows you to work with Entity Framework Core, a modern object-relational mapper for .NET. It enables you to define 
+        your data model using .NET classes and manage database operations such as CRUD (Create, Read, Update, Delete).    
+
+    - Microsoft.EntityFrameworkCore.Tools
+        This package provides additional command-line tools for Entity Framework Core, including database migrations, scaffolding, 
+        and other utilities to streamline database development tasks.
+
+    - Microsoft.EntityFrameworkCore.Design
+        This package includes design-time components for Entity Framework Core, such as the ability to scaffold DbContext and entity 
+        types from an existing database schema using the EF Core command-line tools.
+
+    - Microsoft.EntityFrameworkCore.SqlServer
+        This package provides support for SQL Server-specific functionality within Entity Framework Core. It includes SQL Server-specific 
+        data types, functions, and optimizations for working with SQL Server databases.
+
+    - Microsoft.VisualStudio.Web.CodeGeneration.Design
+        This package is part of the ASP.NET Core development toolkit and provides design-time components for code generation in web projects. 
+        It enables scaffolding of controllers, views, and other artifacts based on your data model.
+
+    - (Downloaded by Default - Swagger) Swashbuckle.AspNetCore
+        This package integrates Swagger UI into ASP.NET Core applications, allowing you to automatically generate interactive API documentation. 
+        It helps developers and consumers visualize and interact with the API endpoints, improving understanding and ease of use.
+
+2. Scaffold DbContext and Entity classes from Database through Package Manager Console
+
+Scaffold-DbContext 'Data Source=DESKTOP-DQUSH87; Initial Catalog=ProductsNYAB; Integrated Security=sspi; TrustServerCertificate=True;' Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+    - Refer to KeyTermsNote.txt for break down of each parameter
+    - Once executed, the corresponding models and context will be scaffolded
+
+3. Remove OnConfiguring() method and No-Args Constructor in Context Class
+    - By removing OnConfiguring() metho and utilize appsettings.json for configuration, it provides a more flexible, secure, and manageable approach 
+        compared to hardcoding configuration settings directly in code with OnConfiguring().
+    - Removing no-args constructor in favor of constructor injection with DbContextOptions aligns with best practices in Entity Framework Core 
+        development and helps ensure proper initialization and configuration of the DbContext class.
+    - Refer to KeyTermsNotes for more explanation
+
+4. Include the ConnectionStrings definition in appsetting.json
+
+  "ConnectionStrings": {
+    "CRUDConnection": "Data Source=DESKTOP-DQUSH87; Initial Catalog=ProductsNYAB; Integrated Security=sspi; TrustServerCertificate=True;"
+  }
+
+5. Add "AddDbContext<>()" to builder.Services in Program file.
+
+    builder.Services.AddDbContext<AspNETCoreApp.Models.ProductsNyabContext>(
+        options =>
+        {
+            options.UseSqlServer(builder.Configuration.GetConnectionString("CRUDConnection"));
+        });
+
+    - This will allow us to configure and register "ProductsNYAB" DbContext class with the Dendency Injection
+        container in the ASP.NET core application
+    - Refer KeyTermsNote for deeper explanation
+
+6. Next, we can start constructing the Controllers with specific CRUD functions we want.
