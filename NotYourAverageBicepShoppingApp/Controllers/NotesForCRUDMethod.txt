@@ -1,0 +1,272 @@
+﻿
+- CRUD Methods available for DbContext or DbSet
+
+1. Create (Insert):
+	- Add(entity): 
+		Adds a new entity to the context.
+	- AddRange(entities):
+		Adds a collection of entities to the context.
+	- AddAsync(entity): 
+		Asynchronously adds a new entity to the context.
+	- AddRangeAsync(entities): 
+		Asynchronously adds a collection of entities to the context.
+
+2. Read (Select):
+
+	- Find(keyValues) / FindAsync():
+		Finds an entity with the specified primary key values. 
+		Find an entity async
+		(Note: This method is used to retrieve entities by their primary key.)
+
+		Example Code:
+			var product = await dbContext.Products.FindAsync(productId);
+	
+	- FirstOrDefault(predicate) / FirstOrDefaultAsync(predicate): 
+		Returns the first element of a sequence that satisfies a specified condition, 
+		or a default value if no such element is found.
+
+		Example Code:
+			var firstProduct = dbContext.Products.FirstOrDefault(p => p.Category == "Electronics");
+
+	- SingleOrDefault(predicate) / SingleOrDefaultAsync(predicate):
+		Returns the only element of a sequence that satisfies a specified condition, 
+		or a default value if no such element is found, or throws an exception if more 
+		than one element satisfies the condition.
+		
+		If no element satisfies the condition, SingleOrDefault returns the default value for the 
+		entity type (usually null for reference types), or you can specify a default value using an 
+		overload.
+		
+		If more than one element satisfies the condition, SingleOrDefault throws an exception 
+		(InvalidOperationException).
+
+		We can include mutliple condition compared to Find which we can only Find based on one condition
+
+		Example Code:
+			var product = await dbContext.Products.SingleOrDefaultAsync(p => p.Id == productId);
+
+	- ToList()/ ToListAsync(): 
+		Executes the query and returns the results as a list.
+		It is usually accompanied with LINQ.
+
+		Example code:
+			var products = await dbContext.Products
+				.Where(p => p.Category == "Electronics")
+				.ToListAsync();
+	
+3. Update (Modify):
+
+	- Update(entity): 
+		Marks the given entity as modified. This method is used in disconnected scenarios 
+		to track changes made to an entity.
+	- UpdateRange(entities): 
+		Marks a collection of entities as modified.
+	- Note: There's no direct method like Update in EF Core to update entities in the database. Typically, changes are tracked automatically when entities are modified within the context, or you can use DbContext.Entry(entity).State = EntityState.Modified to mark an entity as modified.
+	
+4. Delete (Remove):
+
+	- Remove(entity): 
+		Marks the given entity for deletion.
+	- RemoveRange(entities): 
+		Marks a collection of entities for deletion.
+	- RemoveRange(IEnumerable<TEntity>): 
+		Removes a range of entities from the context.
+	- RemoveAsync(entity): 
+		Asynchronously marks the given entity for deletion.
+	- RemoveRangeAsync(entities): 
+		Asynchronously marks a collection of entities for deletion.
+
+-----------------------------------------------------------------------------------
+
+CRUD Method construct 
+
+- CRUD method construct template
+	- 4 Key items within a CRUD method construct
+		1. ActionResult<T> return type
+		2. async set up: async, await and Task return type
+			- async keyword
+				The async keyword is used to define a method (or function) that can run asynchronously. When you mark a method with async, 
+				it allows the method to use the await keyword inside it and indicates that it can perform asynchronous operations and 
+				that it may contain await expressions.
+
+			- await keyword 
+				The await keyword is used to asynchronously wait for the completion of an asynchronous operation marked with the async keyword. 
+				It can only be used within a method or function that is marked with async. When you await an asynchronous operation, the current 
+				method is suspended until the awaited task completes. However, unlike blocking operations, the thread is not blocked, and it can 
+				be utilized to perform other tasks while waiting.
+
+			- Task return type
+				The return type of a Task represents the type of value that the asynchronous operation will produce when it completes. For example:
+				If you have a Task<int>, it means the asynchronous operation will produce an integer result.
+
+		3. [Http] action type annotation
+		4. For Post/Put/Delete, need to DbContext.SaveChangesAsync() after CRUD method Action
+
+	- Example Code for CRUD Method Construct:
+
+			public async Task<ActionResult<T>> CRUDMethodName()
+			{
+				CRUD methods through DbContext
+				return this.Ok(foundProduct)/ return this.BadRequest()
+			}
+
+	- Aside from these 4 key items, we can also add other items to make the CRUD method more robust
+		1. Input Validation 
+			- Utilize ModelState:
+				A class in ASP.NET Core that represents the state of model binding and validation processes 
+				performed during the processing of an HTTP request. It's part of the Microsoft.AspNetCore.Mvc.ModelBinding 
+				namespace.
+
+			- Example Code:
+				if (!ModelState.IsValid)
+					{
+						return BadRequest(ModelState);
+					}
+
+		2. Error Handling
+			- Error handling involves capturing and handling exceptions that occur during the 
+				execution of an action method
+			- Example code:
+				catch (Exception ex)
+				{
+					// Log the exception
+					_logger.LogError(ex, "An error occurred while creating the product.");
+
+					// Return an internal server error response
+					return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred while processing your request. Please try again later.");
+				}
+
+		3. Authentication 
+			- Authentication verifies the identity of users accessing your application. 
+				ASP.NET Core supports various authentication schemes, including cookies, 
+				JWT (JSON Web Tokens), OAuth, etc. 
+			- It typically is for Login Authentication View 
+			- Example Code:
+				[HttpPost]
+				public async Task<IActionResult> Login(LoginViewModel model)
+				{
+					if (ModelState.IsValid)
+					{
+						// Authenticate user (check credentials, etc.)
+						var claims = new List<Claim>
+						{
+							new Claim(ClaimTypes.Name, model.Username),
+							// Add additional claims as needed
+						};
+
+						var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+						var authProperties = new AuthenticationProperties
+						{
+							// Additional authentication properties
+						};
+
+						await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
+        
+						// Redirect authenticated user
+						return RedirectToAction("Index", "Home");
+					}
+
+					// If authentication fails, return to login page with validation errors
+					return View(model);
+				}
+		4. Authorization Example:
+			- Authorization controls access to resources based on the user's identity and roles. 
+			ASP.NET Core provides authorization middleware and attributes to implement 
+			authorization rules.
+			
+			- Example code - adding Annotation to the method
+				
+				[Authorize(Roles = "Admin")]
+				public IActionResult AdminDashboard() {}
+
+- NOTE: 
+	- Note that despite running async and event assuming both run exactly same timing, it is still dependentn on
+		computer scheduler to descide which method to execute first
+
+
+- Keyword Definition in a Construct template
+	- ActionResult<T> return type
+		For a CRUD method, the return type is an ActionResult, which encompasses 2 key items: HTTP response
+		and data to be sent back to the client
+		
+		There are multiple different type of ActionResult return type
+			- return this.Ok(foundProduct);
+				- Returns an `OkObjectResult`` with a status code of 200 (OK). It indicates that the 
+				request has succeeded.
+				- We can also provide the result derived from CRUD operations for example the foundProduct
+
+			- return this.CreatedAtAction("ReadProductByProductId", new { productId = product.ProductId }, product);
+				- Returns `CreatedAtAction` with a status code of 201 (Created)
+				- There are 3 parameters for the this.CreatedAtAction() return. 
+					1. The 1st parameter: Redirected Action Method, 
+						Specify the name of the action method to which the client should be 
+						redirected. It should be another action method within the same controller or a different 
+						controller
+					2. The 2nd parameter: Route Values, 
+						is optional, represents route values to be used when executing the Redirected Action method. 
+						This creates a URL arising from executing the Redirected Action method. 
+					3. The 3 Paramter: Content(Object)
+						is optional, represent the content to return in the Redirected Action Method as response body
+						For example, if the Redirected Action Method is a ReadSingleProduct, then Content = that single
+						Product. If the Redirected Action MEthod is ReadAllProduct, then Content = a IEnumerable<Product>
+						type object.
+				- Usually all 3 parameters are required. Seldom there will be a Redirected method that we want to
+					execute without any pre-requisite data
+
+			- return this.NotFound();
+				- Returns a `NotFoundResult` with a status code of 404 (NotFound). It indicates that the
+					requested source could not be found.
+
+			- return this.BadRequest();
+				- Returns a `BadRequestResult` with a status code of 400 (Bad Request). It indicates that the
+					request could not be understood by the server due to malformed syntax or invalid parameters
+
+			- return this.Unauthorized();
+				- Returns an `UnauthorizedResult` with a status code of 401 (Unauthorized). It indicates that
+					the request requires user authentication
+
+			- return this.Forbid();
+				- Returns a `ForbidResult` with a status code of 403 (Forbidden). It indicates that the server
+					understood the request but refuses to authorize it
+
+			- return this.StatusCode(404)
+				- Returns a StatusCodeResult with a custom status code and optional status description.
+
+			- return this.Content("Custom content", "text/plain", Encoding.UTF8);
+				- Returns a ContentResult with custom content. It allows you to specify the content type, content encoding, 
+					and the actual content to be sent back to the client.
+				- There are 3 parameters for the this.Content() return. 
+					1. Content (Object/string)
+						Represents the content to be returned in the response body
+						Could be object data or string etc.
+					2. contentType (string format "")
+						This parameter specifies the MIME type (Multipurpose Internet Mail Extensions) of the content 
+						being returned.
+						It indicates the type of data contained in the response body
+						Common MIME types: "text/plain" for plain text, "application/json" for JSON data, 
+											"text/html" for HTML content, etc.
+					3. encoding(Encoding) (Optional):
+						This parameter specifies the character encoding used to encode the content. If omitted,
+						content will be encoded using default.
+
+			- return this.Json(new {key="value"});
+				- Returns a JsonResult with JSON content. It serializes the specified object to JSON format 
+					and sends it back to the client.
+
+			- returns this.File(fileStream, "application/pdf", "example.pdf");
+				-  Returns a FileResult with a file attachment. It allows you to return files such as 
+					images, documents, etc.
+				- There are 3 parameters for the this.File() return. 
+					1. fileStream(Stream)
+						Represents the file content as a stream. Typically respresents the content
+						of the file that you want to return in the response body
+						It can be any object that implements the `Stream` class such as FileStream, 
+						MemoryStream
+					2. contentType(string)
+						This parameter specifies the MIME type (Multipurpose Internet Mail Extensions) of the file 
+						content being returned.
+						It indicates the type of data contained in the response body.
+						Common MIME types include "application/pdf" for PDF files, "image/jpeg" for JPEG images,
+						"text/plain" for plain text files, etc.
+					3. fileDownloadName (string):
+						This parameter specifies the file name to be used when the file is downloaded by the client.

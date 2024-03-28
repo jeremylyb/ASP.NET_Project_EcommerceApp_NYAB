@@ -21,8 +21,10 @@
 			easier to develop RESTful services.
 
 2. Define a readonly DbContext field and instantiate using Constructor
-	With the AddDbContext set up in program file, ProductsNyabContext is dependency injected into this constructor
-	whenever we call it.
+	- With the AddDbContext set up in program file, ProductsNyabContext is dependency injected into this constructor
+		whenever we call it.
+
+	- import ProductsNyabContext from Model folder
 
 3. Create custom CRUD functions
 

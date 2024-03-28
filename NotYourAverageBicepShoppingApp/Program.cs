@@ -3,8 +3,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace NotYourAverageBicepShoppingApp
 {
+    /// <summary>
+    /// Represents the entry point of the application.
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// The main entry point of the application.
+        /// </summary>
+        /// <param name="args">The command-line arguments.</param>
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);

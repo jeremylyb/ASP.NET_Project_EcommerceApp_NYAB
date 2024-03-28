@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NotYourAverageBicepShoppingApp.ProductRestApi</name>
+    </assembly>
+    <members>
+        <member name="T:NotYourAverageBicepShoppingApp.ProductRestApi.Controllers.ProductsController">
+            <summary>
+            Controller for managing product-related operations in the Product REST API.
+            </summary>
+        </member>
+        <member name="M:NotYourAverageBicepShoppingApp.ProductRestApi.Controllers.ProductsController.#ctor(NotYourAverageBicepShoppingApp.ProductRestApi.Models.ProductsNyabContext)">
+            <summary>
+            Initializes a new instance of the ProductController class with the specified ProductsAcmeContext.
+            </summary>
+            <param name="context">The ProductsAcmeContext instance.</param>
+        </member>
+        <member name="M:NotYourAverageBicepShoppingApp.ProductRestApi.Controllers.ProductsController.ReadAllProducts">
+            <summary>
+            Retrieves all products.
+            </summary>
+            <returns>An <c>ActionResult</c> containing <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:NotYourAverageBicepShoppingApp.ProductRestApi.Models.Product"/> representing all products, or <see cref="T:Microsoft.AspNetCore.Mvc.NotFoundResult"/> if no products are found.</returns>
+        </member>
+        <member name="M:NotYourAverageBicepShoppingApp.ProductRestApi.Controllers.ProductsController.ReadProductByProductId(System.Int32)">
+            <summary>
+            Retrieves a product by its ID.
+            </summary>
+            <param name="productId">An integer representing the ID of the product to retrieve.</param>
+            <returns>
+            An <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> containing a <see cref="T:NotYourAverageBicepShoppingApp.ProductRestApi.Models.Product"/> instance if found, or <see cref="T:Microsoft.AspNetCore.Mvc.NotFoundResult"/> if no product with the specified ID is found.
+            </returns>
+        </member>
+        <member name="M:NotYourAverageBicepShoppingApp.ProductRestApi.Controllers.ProductsController.ReadAllProductsByProductName(System.String)">
+            <summary>
+            Retrieves all products by a specified product name.
+            </summary>
+            <param name="productName">A string representing the product name.</param>
+            <returns>
+            An <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> containing <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:NotYourAverageBicepShoppingApp.ProductRestApi.Models.Product"/> representing all products with the specified name, 
+            or <see cref="T:Microsoft.AspNetCore.Mvc.NotFoundResult"/> if no products are found.
+            </returns>
+        </member>
+        <member name="M:NotYourAverageBicepShoppingApp.ProductRestApi.Controllers.ProductsController.CreateProduct(NotYourAverageBicepShoppingApp.ProductRestApi.Models.Product)">
+            <summary>
+            Creates a new product.
+            </summary>
+            <param name="product">The product to create.</param>
+            <returns>
+            An <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> containing the created <see cref="T:NotYourAverageBicepShoppingApp.ProductRestApi.Models.Product"/> instance,
+            or a <see cref="T:Microsoft.AspNetCore.Mvc.StatusCodeResult"/> with a status code of 500 if an error occurs.
+            </returns>
+        </member>
+        <member name="M:NotYourAverageBicepShoppingApp.ProductRestApi.Controllers.ProductsController.UpdateProduct(NotYourAverageBicepShoppingApp.ProductRestApi.Models.Product)">
+            <summary>
+            Updates an existing product.
+            </summary>
+            <param name="product">The product to update.</param>
+            <returns>
+            An <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> containing the updated <see cref="T:NotYourAverageBicepShoppingApp.ProductRestApi.Models.Product"/> instance,
+            or <see cref="T:Microsoft.AspNetCore.Mvc.NotFoundResult"/> if no product with the specified ID is found.
+            </returns>
+        </member>
+        <member name="M:NotYourAverageBicepShoppingApp.ProductRestApi.Controllers.ProductsController.DeleteProduct(System.Int32)">
+            <summary>
+            Deletes a product by its ID.
+            </summary>
+            <param name="productId">An integer representing the ID of the product to delete.</param>
+            <returns>
+            An <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> containing the deleted <see cref="T:NotYourAverageBicepShoppingApp.ProductRestApi.Models.Product"/> instance,
+            or <see cref="T:Microsoft.AspNetCore.Mvc.NotFoundResult"/> if no product with the specified ID is found.
+            </returns>
+        </member>
+        <member name="T:NotYourAverageBicepShoppingApp.ProductRestApi.Models.Product">
+            <summary>
+            Represents a product.
+            </summary>
+        </member>
+        <member name="P:NotYourAverageBicepShoppingApp.ProductRestApi.Models.Product.ProductId">
+            <summary>
+            Gets or sets the ID of the product.
+            </summary>
+        </member>
+        <member name="P:NotYourAverageBicepShoppingApp.ProductRestApi.Models.Product.ProductName">
+            <summary>
+            Gets or sets the name of the product.
+            </summary>
+        </member>
+        <member name="P:NotYourAverageBicepShoppingApp.ProductRestApi.Models.Product.ProductPrice">
+            <summary>
+            Gets or sets the price of the product.
+            </summary>
+        </member>
+        <member name="T:NotYourAverageBicepShoppingApp.ProductRestApi.Models.ProductsNyabContext">
+            <summary>
+            Represents the database context for managing product-related entities.
+            </summary>
+        </member>
+        <member name="M:NotYourAverageBicepShoppingApp.ProductRestApi.Models.ProductsNyabContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{NotYourAverageBicepShoppingApp.ProductRestApi.Models.ProductsNyabContext})">
+            <summary>
+            Initializes a new instance of the <see cref="T:NotYourAverageBicepShoppingApp.ProductRestApi.Models.ProductsNyabContext"/> class.
+            </summary>
+            <param name="options">The options to be used by the context.</param>
+        </member>
+        <member name="P:NotYourAverageBicepShoppingApp.ProductRestApi.Models.ProductsNyabContext.Products">
+            <summary>
+            Gets or sets the DbSet of products.
+            </summary>
+        </member>
+        <member name="M:NotYourAverageBicepShoppingApp.ProductRestApi.Models.ProductsNyabContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Configures the behavior of the entity types in the model.
+            </summary>
+            <param name="modelBuilder">The model builder being used to construct the model for this context.</param>
+        </member>
+        <member name="T:NotYourAverageBicepShoppingApp.Program">
+            <summary>
+            Represents the entry point of the application.
+            </summary>
+        </member>
+        <member name="M:NotYourAverageBicepShoppingApp.Program.Main(System.String[])">
+            <summary>
+            The main entry point of the application.
+            </summary>
+            <param name="args">The command-line arguments.</param>
+        </member>
+    </members>
+</doc>

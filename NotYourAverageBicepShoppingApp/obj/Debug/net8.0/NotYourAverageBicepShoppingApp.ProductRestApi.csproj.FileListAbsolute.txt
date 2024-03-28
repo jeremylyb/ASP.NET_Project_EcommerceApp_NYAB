@@ -251,3 +251,5 @@ C:\Users\jerem\GitHub\ASP.NET_Project_EcommerceApp\NotYourAverageBicepShoppingAp
 C:\Users\jerem\GitHub\ASP.NET_Project_EcommerceApp\NotYourAverageBicepShoppingApp\obj\Debug\net8.0\NotYourAverageBicepShoppingApp.ProductRestApi.pdb
 C:\Users\jerem\GitHub\ASP.NET_Project_EcommerceApp\NotYourAverageBicepShoppingApp\obj\Debug\net8.0\NotYourAverageBicepShoppingApp.ProductRestApi.genruntimeconfig.cache
 C:\Users\jerem\GitHub\ASP.NET_Project_EcommerceApp\NotYourAverageBicepShoppingApp\obj\Debug\net8.0\ref\NotYourAverageBicepShoppingApp.ProductRestApi.dll
+C:\Users\jerem\GitHub\ASP.NET_Project_EcommerceApp\NotYourAverageBicepShoppingApp\bin\Debug\net8.0\NotYourAverageBicepShoppingApp.ProductRestApi.xml
+C:\Users\jerem\GitHub\ASP.NET_Project_EcommerceApp\NotYourAverageBicepShoppingApp\obj\Debug\net8.0\NotYourAverageBicepShoppingApp.ProductRestApi.xml
