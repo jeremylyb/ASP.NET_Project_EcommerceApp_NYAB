@@ -46,3 +46,9 @@
             - Return to View All Product View
 - Once cleaning is complete, we will host this App on Somee.com 
 - In Phase2, we will focus on enhancing the frontend design.
+
+3 April 2024 : Code Cleaning
+- Identified certain areas for enhancement consideration
+  1. Page display starts with 2 links: AllProducts and CreateCart
+      May look to enhance this display
+  2. Consider using AutoMapper to map the Model constructs from REST API to MVC. Currently is manual import over. 
