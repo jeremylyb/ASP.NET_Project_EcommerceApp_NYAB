@@ -58,3 +58,4 @@
      - Add return to AllProducts view page
   5. Consider using AutoMapper to map the Model constructs from REST API to MVC. Currently is manual import over.
   6. Optional: Utilize different serializer. Eg. builder.Services.AddControllersWithViews().AddXmlSerializerFormatters();
+  7. Look into Customized exception handling.
