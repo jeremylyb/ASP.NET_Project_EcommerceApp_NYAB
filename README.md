@@ -49,7 +49,12 @@
 
 3 April 2024 : Code Cleaning
 - Identified certain areas for enhancement consideration
-  1. Page display starts with 2 links: AllProducts and CreateCart
-      May look to enhance this display
-  2. Consider using AutoMapper to map the Model constructs from REST API to MVC. Currently is manual import over.
-  3. Optional: Utilize different serializer. Eg. builder.Services.AddControllersWithViews().AddXmlSerializerFormatters();
+  1. Index page display 2 links: Get a shopping cart! and All Products link
+     - Look to upgrade the display - Maybe change it into icon/ nav bar display
+  2. All Products link currently display all product details.
+     - Change the display of full info in OneProduct View.
+     - Add return to main index page
+  3. OneProduct View page
+     - Add return to AllProducts view page
+  5. Consider using AutoMapper to map the Model constructs from REST API to MVC. Currently is manual import over.
+  6. Optional: Utilize different serializer. Eg. builder.Services.AddControllersWithViews().AddXmlSerializerFormatters();
