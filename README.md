@@ -51,4 +51,5 @@
 - Identified certain areas for enhancement consideration
   1. Page display starts with 2 links: AllProducts and CreateCart
       May look to enhance this display
-  2. Consider using AutoMapper to map the Model constructs from REST API to MVC. Currently is manual import over. 
+  2. Consider using AutoMapper to map the Model constructs from REST API to MVC. Currently is manual import over.
+  3. Optional: Utilize different serializer. Eg. builder.Services.AddControllersWithViews().AddXmlSerializerFormatters();
