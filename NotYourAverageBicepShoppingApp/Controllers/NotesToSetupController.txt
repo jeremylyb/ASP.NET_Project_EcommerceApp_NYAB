@@ -24,7 +24,7 @@
 	- With the AddDbContext set up in program file, ProductsNyabContext is dependency injected into this constructor
 		whenever we call it.
 
-	- import ProductsNyabContext from Model folder
+	- import ProductsNyabContext from Model folder (This is done through scaffolding)
 
 3. Create custom CRUD functions
 

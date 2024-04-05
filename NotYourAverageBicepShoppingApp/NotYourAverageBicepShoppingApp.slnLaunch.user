@@ -1,0 +1,24 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Name": "NotYourAverageBicepShoppingApp.ProductRestApi.csproj",
+        "Action": "Start",
+        "DebugTarget": ""
+      },
+      {
+        "Name": "..\\NotYourAverageBicepShoppingApp.CartRestApi\\NotYourAverageBicepShoppingApp.CartRestApi.csproj",
+        "Action": "Start"
+      },
+      {
+        "Name": "..\\NotYourAverageBicepShoppingApp.UIApp\\NotYourAverageBicepShoppingApp.UIApp.csproj",
+        "Action": "Start"
+      },
+      {
+        "Name": "..\\NotYourAverageBicepShoppingApp.OrdersRestAPI\\NotYourAverageBicepShoppingApp.OrderRestAPI.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

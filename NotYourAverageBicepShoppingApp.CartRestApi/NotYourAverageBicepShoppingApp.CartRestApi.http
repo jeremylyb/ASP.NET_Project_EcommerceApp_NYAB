@@ -1,0 +1,6 @@
+@NotYourAverageBicepShoppingApp.CartRestApi_HostAddress = http://localhost:5267
+
+GET {{NotYourAverageBicepShoppingApp.CartRestApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

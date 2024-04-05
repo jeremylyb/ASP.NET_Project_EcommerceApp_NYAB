@@ -28,6 +28,8 @@ Steps:
         It helps developers and consumers visualize and interact with the API endpoints, improving understanding and ease of use.
 
 2. Scaffold DbContext and Entity classes from Database through Package Manager Console
+    - Ensure it is referenced by the right startup project
+    - Ensure that it is building in the right project.
 
 Scaffold-DbContext 'Data Source=DESKTOP-DQUSH87; Initial Catalog=ProductsNYAB; Integrated Security=sspi; TrustServerCertificate=True;' Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
     - Refer to KeyTermsNote.txt for break down of each parameter
@@ -59,3 +61,8 @@ Scaffold-DbContext 'Data Source=DESKTOP-DQUSH87; Initial Catalog=ProductsNYAB; I
     - Refer KeyTermsNote for deeper explanation
 
 6. Next, we can start constructing the Controllers with specific CRUD functions we want.
+
+
+------------------------- EXTRAS ------------------------------------
+1. Scaffold multiple DB in a REST API Project
+- Rebuild project first before scaffolding.

@@ -5,6 +5,12 @@ VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotYourAverageBicepShoppingApp.ProductRestApi", "NotYourAverageBicepShoppingApp.ProductRestApi.csproj", "{D21ECD93-9CCF-4427-A28F-9CF0B8F95784}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotYourAverageBicepShoppingApp.CartRestApi", "..\NotYourAverageBicepShoppingApp.CartRestApi\NotYourAverageBicepShoppingApp.CartRestApi.csproj", "{F9E571C2-E65B-4C74-A329-0BB2237BB1EA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotYourAverageBicepShoppingApp.UIApp", "..\NotYourAverageBicepShoppingApp.UIApp\NotYourAverageBicepShoppingApp.UIApp.csproj", "{BF4F67B4-6262-4656-AAD8-6F7DA0CE4CCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotYourAverageBicepShoppingApp.OrderRestAPI", "..\NotYourAverageBicepShoppingApp.OrdersRestAPI\NotYourAverageBicepShoppingApp.OrderRestAPI.csproj", "{337EA5A1-047E-4FB1-8568-6C7A29E78725}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{D21ECD93-9CCF-4427-A28F-9CF0B8F95784}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D21ECD93-9CCF-4427-A28F-9CF0B8F95784}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D21ECD93-9CCF-4427-A28F-9CF0B8F95784}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9E571C2-E65B-4C74-A329-0BB2237BB1EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9E571C2-E65B-4C74-A329-0BB2237BB1EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9E571C2-E65B-4C74-A329-0BB2237BB1EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9E571C2-E65B-4C74-A329-0BB2237BB1EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF4F67B4-6262-4656-AAD8-6F7DA0CE4CCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF4F67B4-6262-4656-AAD8-6F7DA0CE4CCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF4F67B4-6262-4656-AAD8-6F7DA0CE4CCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF4F67B4-6262-4656-AAD8-6F7DA0CE4CCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{337EA5A1-047E-4FB1-8568-6C7A29E78725}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{337EA5A1-047E-4FB1-8568-6C7A29E78725}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{337EA5A1-047E-4FB1-8568-6C7A29E78725}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{337EA5A1-047E-4FB1-8568-6C7A29E78725}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
