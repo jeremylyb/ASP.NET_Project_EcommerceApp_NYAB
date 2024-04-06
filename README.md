@@ -47,7 +47,7 @@
 - Once cleaning is complete, we will host this App on Somee.com 
 - In Phase2, we will focus on enhancing the frontend design.
 
-3 - 4 April 2024 : Code Cleaning
+3 - 5 April 2024 : Code Cleaning
 - Identified certain areas for enhancement consideration
   1. Index page display 2 links: Get a shopping cart! and All Products link
      - Look to upgrade the display - Maybe change it into icon/ nav bar display
@@ -66,3 +66,4 @@
   9. Consider Remodel to microservices architecture, but probably at a later stage. May need to work on upskilling a course.
   10. Create a ReadMe for each Project component
   11. Currently DeleteProductFromCartAsync() method from CartClient deletes all of provided productId from the cart. To change it to delete one of the product item from Cart
+  12. Allow to add multiple quantity of one product
