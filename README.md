@@ -66,4 +66,4 @@
   9. Consider Remodel to microservices architecture, but probably at a later stage. May need to work on upskilling a course.
   10. Create a ReadMe for each Project component
   11. Currently DeleteProductFromCartAsync() method from CartClient deletes all of provided productId from the cart. To change it to delete one of the product item from Cart
-  12. Allow to add multiple quantity of one product
+  12. Allow to add multiple quantity of one product (Completed - Refer to Commit History for further enhancement complications)
