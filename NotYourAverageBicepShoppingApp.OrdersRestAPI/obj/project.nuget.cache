@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YS4AcAvjiKQUZQ1/4aNJkTwG8Y0tVIGZTgdbNMB0rIH2n9C8U98EDgqHkYBSqFvSVV6P6nsqozFcuRqY8OBShw==",
+  "dgSpecHash": "tj033vTtIZvTkFOVZIwc5e8vFcpEfIOu/Yu02pze9LryDa/cUiaW4aRDM1P6wyWDJYxBCjhRTUuXe2scxNlKKA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jerem\\GitHub\\ASP.NET_Project_EcommerceApp\\NotYourAverageBicepShoppingApp.OrdersRestAPI\\NotYourAverageBicepShoppingApp.OrderRestAPI.csproj",
+  "projectFilePath": "C:\\Users\\jerem\\GitHub\\ASP.NET_Project_EcommerceApp\\NotYourAverageBicepShoppingApp.OrdersRestAPI\\NotYourAverageBicepShoppingApp.OrdersRestAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jerem\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\jerem\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

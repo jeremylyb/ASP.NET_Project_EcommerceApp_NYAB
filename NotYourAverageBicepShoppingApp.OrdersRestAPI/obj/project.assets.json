@@ -8263,9 +8263,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jerem\\GitHub\\ASP.NET_Project_EcommerceApp\\NotYourAverageBicepShoppingApp.OrdersRestAPI\\NotYourAverageBicepShoppingApp.OrderRestAPI.csproj",
-      "projectName": "NotYourAverageBicepShoppingApp.OrderRestAPI",
-      "projectPath": "C:\\Users\\jerem\\GitHub\\ASP.NET_Project_EcommerceApp\\NotYourAverageBicepShoppingApp.OrdersRestAPI\\NotYourAverageBicepShoppingApp.OrderRestAPI.csproj",
+      "projectUniqueName": "C:\\Users\\jerem\\GitHub\\ASP.NET_Project_EcommerceApp\\NotYourAverageBicepShoppingApp.OrdersRestAPI\\NotYourAverageBicepShoppingApp.OrdersRestAPI.csproj",
+      "projectName": "NotYourAverageBicepShoppingApp.OrdersRestAPI",
+      "projectPath": "C:\\Users\\jerem\\GitHub\\ASP.NET_Project_EcommerceApp\\NotYourAverageBicepShoppingApp.OrdersRestAPI\\NotYourAverageBicepShoppingApp.OrdersRestAPI.csproj",
       "packagesPath": "C:\\Users\\jerem\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\jerem\\GitHub\\ASP.NET_Project_EcommerceApp\\NotYourAverageBicepShoppingApp.OrdersRestAPI\\obj\\",
       "projectStyle": "PackageReference",

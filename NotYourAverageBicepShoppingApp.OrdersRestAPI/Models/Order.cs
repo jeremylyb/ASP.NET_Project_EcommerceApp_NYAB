@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace NotYourAverageBicepShoppingApp.OrderRestAPI.Models;
+namespace NotYourAverageBicepShoppingApp.OrdersRestAPI.Models;
 
 public partial class Order
 {

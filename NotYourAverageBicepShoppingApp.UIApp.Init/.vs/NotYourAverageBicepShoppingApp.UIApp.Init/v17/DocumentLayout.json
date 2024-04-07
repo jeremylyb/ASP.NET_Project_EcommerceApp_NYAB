@@ -1,0 +1,174 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\jerem\\GitHub\\ASP.NET_Project_EcommerceApp\\NotYourAverageBicepShoppingApp.UIApp.Init\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8E2CDB46-F502-4ED1-80EE-9F8A5B5F7808}|NotYourAverageBicepShoppingApp.UIApp\\NotYourAverageBicepShoppingApp.UIApp.csproj|c:\\users\\jerem\\github\\asp.net_project_ecommerceapp\\notyouraveragebicepshoppingapp.uiapp.init\\notyouraveragebicepshoppingapp.uiapp\\controllers\\uicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E2CDB46-F502-4ED1-80EE-9F8A5B5F7808}|NotYourAverageBicepShoppingApp.UIApp\\NotYourAverageBicepShoppingApp.UIApp.csproj|solutionrelative:notyouraveragebicepshoppingapp.uiapp\\controllers\\uicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8E2CDB46-F502-4ED1-80EE-9F8A5B5F7808}|NotYourAverageBicepShoppingApp.UIApp\\NotYourAverageBicepShoppingApp.UIApp.csproj|c:\\users\\jerem\\github\\asp.net_project_ecommerceapp\\notyouraveragebicepshoppingapp.uiapp.init\\notyouraveragebicepshoppingapp.uiapp\\views\\ui\\oneproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8E2CDB46-F502-4ED1-80EE-9F8A5B5F7808}|NotYourAverageBicepShoppingApp.UIApp\\NotYourAverageBicepShoppingApp.UIApp.csproj|solutionrelative:notyouraveragebicepshoppingapp.uiapp\\views\\ui\\oneproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8E2CDB46-F502-4ED1-80EE-9F8A5B5F7808}|NotYourAverageBicepShoppingApp.UIApp\\NotYourAverageBicepShoppingApp.UIApp.csproj|c:\\users\\jerem\\github\\asp.net_project_ecommerceapp\\notyouraveragebicepshoppingapp.uiapp.init\\notyouraveragebicepshoppingapp.uiapp\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{8E2CDB46-F502-4ED1-80EE-9F8A5B5F7808}|NotYourAverageBicepShoppingApp.UIApp\\NotYourAverageBicepShoppingApp.UIApp.csproj|solutionrelative:notyouraveragebicepshoppingapp.uiapp\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8E2CDB46-F502-4ED1-80EE-9F8A5B5F7808}|NotYourAverageBicepShoppingApp.UIApp\\NotYourAverageBicepShoppingApp.UIApp.csproj|c:\\users\\jerem\\github\\asp.net_project_ecommerceapp\\notyouraveragebicepshoppingapp.uiapp.init\\notyouraveragebicepshoppingapp.uiapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E2CDB46-F502-4ED1-80EE-9F8A5B5F7808}|NotYourAverageBicepShoppingApp.UIApp\\NotYourAverageBicepShoppingApp.UIApp.csproj|solutionrelative:notyouraveragebicepshoppingapp.uiapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D140CB1-380E-4359-99BB-32B44543B584}|..\\NotYourAverageBicepShoppingApp.OrdersRestAPI\\NotYourAverageBicepShoppingApp.OrdersRestAPI.csproj|c:\\users\\jerem\\github\\asp.net_project_ecommerceapp\\notyouraveragebicepshoppingapp.ordersrestapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D140CB1-380E-4359-99BB-32B44543B584}|..\\NotYourAverageBicepShoppingApp.OrdersRestAPI\\NotYourAverageBicepShoppingApp.OrdersRestAPI.csproj|c:\\users\\jerem\\github\\asp.net_project_ecommerceapp\\notyouraveragebicepshoppingapp.ordersrestapi\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D140CB1-380E-4359-99BB-32B44543B584}|..\\NotYourAverageBicepShoppingApp.OrdersRestAPI\\NotYourAverageBicepShoppingApp.OrdersRestAPI.csproj|c:\\users\\jerem\\github\\asp.net_project_ecommerceapp\\notyouraveragebicepshoppingapp.ordersrestapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 142,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{74946827-37a0-11d2-a273-00c04f8ef4ff}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OneProduct.cshtml",
+              "DocumentMoniker": "C:\\Users\\jerem\\GitHub\\ASP.NET_Project_EcommerceApp\\NotYourAverageBicepShoppingApp.UIApp.Init\\NotYourAverageBicepShoppingApp.UIApp\\Views\\UI\\OneProduct.cshtml",
+              "RelativeDocumentMoniker": "NotYourAverageBicepShoppingApp.UIApp\\Views\\UI\\OneProduct.cshtml",
+              "ToolTip": "C:\\Users\\jerem\\GitHub\\ASP.NET_Project_EcommerceApp\\NotYourAverageBicepShoppingApp.UIApp.Init\\NotYourAverageBicepShoppingApp.UIApp\\Views\\UI\\OneProduct.cshtml",
+              "RelativeToolTip": "NotYourAverageBicepShoppingApp.UIApp\\Views\\UI\\OneProduct.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-07T10:31:19.012Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UIController.cs",
+              "DocumentMoniker": "C:\\Users\\jerem\\GitHub\\ASP.NET_Project_EcommerceApp\\NotYourAverageBicepShoppingApp.UIApp.Init\\NotYourAverageBicepShoppingApp.UIApp\\Controllers\\UIController.cs",
+              "RelativeDocumentMoniker": "NotYourAverageBicepShoppingApp.UIApp\\Controllers\\UIController.cs",
+              "ToolTip": "C:\\Users\\jerem\\GitHub\\ASP.NET_Project_EcommerceApp\\NotYourAverageBicepShoppingApp.UIApp.Init\\NotYourAverageBicepShoppingApp.UIApp\\Controllers\\UIController.cs",
+              "RelativeToolTip": "NotYourAverageBicepShoppingApp.UIApp\\Controllers\\UIController.cs",
+              "ViewState": "AQIAACkAAAAAAAAAAAAwwDIAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T10:17:28.742Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\jerem\\GitHub\\ASP.NET_Project_EcommerceApp\\NotYourAverageBicepShoppingApp.OrdersRestAPI\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "..\\NotYourAverageBicepShoppingApp.OrdersRestAPI\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\jerem\\GitHub\\ASP.NET_Project_EcommerceApp\\NotYourAverageBicepShoppingApp.OrdersRestAPI\\Properties\\launchSettings.json",
+              "RelativeToolTip": "..\\NotYourAverageBicepShoppingApp.OrdersRestAPI\\Properties\\launchSettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-04-07T10:16:02.512Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\jerem\\GitHub\\ASP.NET_Project_EcommerceApp\\NotYourAverageBicepShoppingApp.OrdersRestAPI\\Program.cs",
+              "RelativeDocumentMoniker": "..\\NotYourAverageBicepShoppingApp.OrdersRestAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\jerem\\GitHub\\ASP.NET_Project_EcommerceApp\\NotYourAverageBicepShoppingApp.OrdersRestAPI\\Program.cs",
+              "RelativeToolTip": "..\\NotYourAverageBicepShoppingApp.OrdersRestAPI\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAnwBkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T10:06:05.958Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 46,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\jerem\\GitHub\\ASP.NET_Project_EcommerceApp\\NotYourAverageBicepShoppingApp.UIApp.Init\\NotYourAverageBicepShoppingApp.UIApp\\appsettings.json",
+              "RelativeDocumentMoniker": "NotYourAverageBicepShoppingApp.UIApp\\appsettings.json",
+              "ToolTip": "C:\\Users\\jerem\\GitHub\\ASP.NET_Project_EcommerceApp\\NotYourAverageBicepShoppingApp.UIApp.Init\\NotYourAverageBicepShoppingApp.UIApp\\appsettings.json",
+              "RelativeToolTip": "NotYourAverageBicepShoppingApp.UIApp\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-04-07T10:23:40.16Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "OrdersController.cs",
+              "DocumentMoniker": "C:\\Users\\jerem\\GitHub\\ASP.NET_Project_EcommerceApp\\NotYourAverageBicepShoppingApp.OrdersRestAPI\\Controllers\\OrdersController.cs",
+              "RelativeDocumentMoniker": "..\\NotYourAverageBicepShoppingApp.OrdersRestAPI\\Controllers\\OrdersController.cs",
+              "ToolTip": "C:\\Users\\jerem\\GitHub\\ASP.NET_Project_EcommerceApp\\NotYourAverageBicepShoppingApp.OrdersRestAPI\\Controllers\\OrdersController.cs",
+              "RelativeToolTip": "..\\NotYourAverageBicepShoppingApp.OrdersRestAPI\\Controllers\\OrdersController.cs",
+              "ViewState": "AQIAACwAAAAAAAAAAAAwwAUAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T10:17:06.3Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\jerem\\GitHub\\ASP.NET_Project_EcommerceApp\\NotYourAverageBicepShoppingApp.UIApp.Init\\NotYourAverageBicepShoppingApp.UIApp\\Program.cs",
+              "RelativeDocumentMoniker": "NotYourAverageBicepShoppingApp.UIApp\\Program.cs",
+              "ToolTip": "C:\\Users\\jerem\\GitHub\\ASP.NET_Project_EcommerceApp\\NotYourAverageBicepShoppingApp.UIApp.Init\\NotYourAverageBicepShoppingApp.UIApp\\Program.cs",
+              "RelativeToolTip": "NotYourAverageBicepShoppingApp.UIApp\\Program.cs",
+              "ViewState": "AQIAAEAAAAAAAAAAAAAgwCsAAABEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T10:11:34.178Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

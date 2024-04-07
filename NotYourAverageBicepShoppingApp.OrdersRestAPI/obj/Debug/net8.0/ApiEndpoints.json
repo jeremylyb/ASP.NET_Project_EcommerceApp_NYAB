@@ -9,13 +9,13 @@
     "Parameters": [
       {
         "Name": "order",
-        "Type": "NotYourAverageBicepShoppingApp.OrderRestAPI.Models.Order",
+        "Type": "NotYourAverageBicepShoppingApp.OrdersRestAPI.Models.Order",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "NotYourAverageBicepShoppingApp.OrderRestAPI.Models.Order",
+        "Type": "NotYourAverageBicepShoppingApp.OrdersRestAPI.Models.Order",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -41,7 +41,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "NotYourAverageBicepShoppingApp.OrderRestAPI.Models.Order",
+        "Type": "NotYourAverageBicepShoppingApp.OrdersRestAPI.Models.Order",
         "MediaTypes": [
           "text/plain",
           "application/json",

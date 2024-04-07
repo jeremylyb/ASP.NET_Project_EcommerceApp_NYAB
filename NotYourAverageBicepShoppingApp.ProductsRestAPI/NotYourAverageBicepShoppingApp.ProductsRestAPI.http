@@ -1,0 +1,6 @@
+@NotYourAverageBicepShoppingApp.ProductsRestAPI_HostAddress = http://localhost:5033
+
+GET {{NotYourAverageBicepShoppingApp.ProductsRestAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

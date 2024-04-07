@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using NotYourAverageBicepShoppingApp.OrderRestAPI.Models;
+using NotYourAverageBicepShoppingApp.OrdersRestAPI.Models;
 
 namespace NotYourAverageBicepShoppingApp.OrderRestAPI.Controllers
 {

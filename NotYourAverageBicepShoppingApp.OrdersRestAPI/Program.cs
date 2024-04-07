@@ -1,7 +1,7 @@
 
 using Microsoft.EntityFrameworkCore;
 
-namespace NotYourAverageBicepShoppingApp.OrderRestAPI
+namespace NotYourAverageBicepShoppingApp.OrdersRestAPI
 {
     public class Program
     {
@@ -16,7 +16,7 @@ namespace NotYourAverageBicepShoppingApp.OrderRestAPI
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddDbContext<NotYourAverageBicepShoppingApp.OrderRestAPI.Models.OrdersNyabContext>(
+            builder.Services.AddDbContext<NotYourAverageBicepShoppingApp.OrdersRestAPI.Models.OrdersNyabContext>(
             options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("CRUDConnection"));

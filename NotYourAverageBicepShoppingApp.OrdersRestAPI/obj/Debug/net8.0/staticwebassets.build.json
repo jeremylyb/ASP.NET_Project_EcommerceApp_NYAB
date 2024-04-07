@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "iARaqdXAw3iC5Mu70EpDTQmQek0WabnPlGjYjQ+ZN9U=",
-  "Source": "NotYourAverageBicepShoppingApp.OrderRestAPI",
-  "BasePath": "_content/NotYourAverageBicepShoppingApp.OrderRestAPI",
+  "Hash": "HLv+dubreouVZUg1n3jtn2CQ5mIHOb1HepPZWB9sNQU=",
+  "Source": "NotYourAverageBicepShoppingApp.OrdersRestAPI",
+  "BasePath": "_content/NotYourAverageBicepShoppingApp.OrdersRestAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
