@@ -47,7 +47,7 @@ namespace NotYourAverageBicepShoppingApp.UIApp.APIClient
         }
 
 
-        public async Task<CartItem?> PutAddProductToCartAsync(int cartId, int productId)
+        public async Task<CartItem?> PutAddProductToCartAsync(int cartId, int productId, int quantity)
         {
             try
             {
@@ -57,7 +57,7 @@ namespace NotYourAverageBicepShoppingApp.UIApp.APIClient
                 var productJsonDeserialize = await JsonSerializer.DeserializeAsync<Product>(productsStreamTask);
                 string productJson = JsonSerializer.Serialize(productJsonDeserialize, typeof(Product));
                 StringContent content = new StringContent(productJson, System.Text.Encoding.UTF8, "application/json");
-                HttpResponseMessage putResponse = await cartClient.PutAsync($"/api/Carts/{cartId}/add-product/{productId}", content);
+                HttpResponseMessage putResponse = await cartClient.PutAsync($"/api/Carts/{cartId}/add-product/{productId}/{quantity}", content);
                 var putResponseBody = await putResponse.Content.ReadAsStreamAsync();
                 return await JsonSerializer.DeserializeAsync<CartItem>(putResponseBody);
             }

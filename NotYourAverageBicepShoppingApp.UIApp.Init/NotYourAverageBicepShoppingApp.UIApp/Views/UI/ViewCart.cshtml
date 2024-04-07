@@ -5,11 +5,6 @@
 }
 
 
-
-<h1>Cart Items Total Price: @Model.Cart.CartPrice</h1>
-
-<br />
-
 <a asp-controller="UI" asp-action="AllProducts">Return back to All Products!</a>
 <br />
 
@@ -17,6 +12,10 @@
 <br />
 
 <a asp-controller="UI" asp-action="NewOrderBefore">Time to Checkout!</a>
+
+<br />
+
+<h1>Cart Items Total Price: @Model.Cart.CartPrice</h1>
 
 <br />
 
@@ -30,4 +29,6 @@
 
     <a asp-controller="UI" asp-action="DeleteProductFromCart" asp-route-productId="@cartItem.Product.ProductId">Remove Product from Cart</a>
     <hr />
+
+
 }

@@ -15,4 +15,7 @@ public partial class CartItem
 
     [JsonIgnore]
     public virtual Cart? FkCart { get; set; } = null!;
+
+    [JsonPropertyName("quantity")]
+    public int Quantity { get; set; }
 }

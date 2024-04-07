@@ -102,13 +102,13 @@ namespace NotYourAverageBicepShoppingApp.UIApp.Controllers
 
         }
 
-        public async Task<IActionResult> AddProductToCart(int productId)
+        public async Task<IActionResult> AddProductToCart(int productId, int quantity)
         {
             string? cartIdString = HttpContext.Session.GetString("CartId");
             try
             {
                 int.TryParse(cartIdString, out int cartId);
-                await _cartsClient.PutAddProductToCartAsync(cartId, productId);
+                await _cartsClient.PutAddProductToCartAsync(cartId, productId, quantity);
                 return RedirectToAction(nameof(ViewCart));
             }
             catch (Exception ex)
