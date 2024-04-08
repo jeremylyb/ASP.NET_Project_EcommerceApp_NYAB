@@ -47,7 +47,7 @@
 - Once cleaning is complete, we will host this App on Somee.com 
 - In Phase2, we will focus on enhancing the frontend design.
 
-3 - 5 April 2024 : Code Cleaning
+3 - 6 April 2024 : Code Cleaning
 - Identified certain areas for enhancement consideration
   1. Index page display 2 links: Get a shopping cart! and All Products link
      - Look to upgrade the display - Maybe change it into icon/ nav bar display
@@ -67,3 +67,7 @@
   10. Create a ReadMe for each Project component
   11. Currently DeleteProductFromCartAsync() method from CartClient deletes all of provided productId from the cart. To change it to delete one of the product item from Cart
   12. Allow to add multiple quantity of one product (Completed - Refer to Commit History for further enhancement complications)
+ 
+  7 - 8 April 2024 : Enhancement
+  12. Allow to add multiple quantity of one product (Completed - Refer to Commit History for further enhancement complications)
+  7. Look into Customized exception handling (WIP. Compelted for CartController, CartClient, UiController)
