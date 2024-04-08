@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using NotYourAverageBicepShoppingApp.CartsRestAPI.Models;
 
@@ -20,25 +21,33 @@ namespace NotYourAverageBicepShoppingApp.CartsRestAPI.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<Cart>> CreateCart()
+        public async Task<ActionResult<Cart?>> CreateCart()
         {
             try
             {
                 Cart cart = new Cart() { CartItems = new List<CartItem>(), CartPrice = 0.0m };
                 _cartContext.Carts.Add(cart);
-                await _cartContext.SaveChangesAsync();
+                var output = await _cartContext.SaveChangesAsync();
                 var result = this.CreatedAtAction("ReadCartByCartId", new { CartId = cart.CartId }, cart);
                 return this.Ok(cart);
             }
+            catch (DbUpdateException ex)
+            {
+                return StatusCode(500, $"Database error occurred: {ex.Message}");
+            }
+            catch (InvalidOperationException ex)
+            {
+                return StatusCode(500, $"Invalid operation: {ex.Message}");
+            }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Error: {ex.Message}");
+                return StatusCode(500, $"Error occurred: {ex.Message}");
             }
 
         }
 
         [HttpGet]
-        public async Task<ActionResult<Cart>> ReadAllCarts()
+        public async Task<ActionResult<Cart?>> ReadAllCarts()
         {
             try
             {
@@ -49,14 +58,30 @@ namespace NotYourAverageBicepShoppingApp.CartsRestAPI.Controllers
                 }
                 return this.NotFound();
             }
+            catch (DbUpdateException ex)
+            {
+                return StatusCode(500, $"Database error occurred: {ex.Message}");
+            }
+            catch (InvalidOperationException ex)
+            {
+                return StatusCode(500, $"Invalid operation: {ex.Message}");
+            }
+            catch (SqlException ex)
+            {
+                return StatusCode(500, $"An error occurred while processing your request: {ex.Message}");
+            }
+            catch (TimeoutException ex)
+            {
+                return StatusCode(500, $"The operation timed out: {ex.Message}");
+            }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Error: {ex.Message}");
+                return StatusCode(500, $"An error occurred while processing your request: {ex.Message}");
             }
         }
 
         [HttpGet("{cartId}")]
-        public async Task<ActionResult<Cart>>? ReadCartByCartId(int cartId)
+        public async Task<ActionResult<Cart?>> ReadCartByCartId(int cartId)
         {
             try
             {
@@ -91,15 +116,31 @@ namespace NotYourAverageBicepShoppingApp.CartsRestAPI.Controllers
 
                 return this.Ok(cartDetailsDTO);
             }
+            catch (DbUpdateException ex)
+            {
+                return StatusCode(500, $"Database error occurred: {ex.Message}");
+            }
+            catch (InvalidOperationException ex)
+            {
+                return StatusCode(500, $"Invalid operation: {ex.Message}");
+            }
+            catch (SqlException ex)
+            {
+                return StatusCode(500, $"An error occurred while processing your request: {ex.Message}");
+            }
+            catch (TimeoutException ex)
+            {
+                return StatusCode(500, $"The operation timed out: {ex.Message}");
+            }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Error: {ex.Message}");
+                return StatusCode(500, $"An error occurred while processing your request: {ex.Message}");
             }
 
         }
 
         [HttpPut("{cartId}/add-product/{productId}/{quantity}")]
-        public async Task<ActionResult<Cart>> UpdateCartAddProduct(int cartId, int productId, int quantity)
+        public async Task<ActionResult<Cart?>> UpdateCartAddProduct(int cartId, int productId, int quantity)
         {
             try
             {
@@ -142,14 +183,38 @@ namespace NotYourAverageBicepShoppingApp.CartsRestAPI.Controllers
                     }
                 }
             }
+            catch (DbUpdateException ex)
+            {
+                return StatusCode(500, $"Database error occurred: {ex.Message}");
+            }
+            catch (InvalidOperationException ex)
+            {
+                return StatusCode(500, $"Invalid operation: {ex.Message}");
+            }
+            catch (SqlException ex)
+            {
+                return StatusCode(500, $"An error occurred while processing your request: {ex.Message}");
+            }
+            catch (TimeoutException ex)
+            {
+                return StatusCode(500, $"The operation timed out: {ex.Message}");
+            }
+            catch (NullReferenceException ex)
+            {
+                return StatusCode(500, $"An error occurred while processing your request: {ex.Message}");
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest($"An error occurred while processing your request: {ex.Message}");
+            }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Error: {ex.Message}");
+                return StatusCode(500, $"An error occurred while processing your request: {ex.Message}");
             }
         }   
 
         [HttpPut("{cartId}/remove-product/{productId}")]
-        public async Task<ActionResult<CartItem>> UpdateCartRemoveProduct(int cartId, int productId)
+        public async Task<ActionResult<CartItem?>> UpdateCartRemoveProduct(int cartId, int productId)
         {
             try
             {
@@ -178,14 +243,38 @@ namespace NotYourAverageBicepShoppingApp.CartsRestAPI.Controllers
 
             }
             }
+            catch (DbUpdateException ex)
+            {
+                return StatusCode(500, $"Database error occurred: {ex.Message}");
+            }
+            catch (InvalidOperationException ex)
+            {
+                return StatusCode(500, $"Invalid operation: {ex.Message}");
+            }
+            catch (SqlException ex)
+            {
+                return StatusCode(500, $"An error occurred while processing your request: {ex.Message}");
+            }
+            catch (TimeoutException ex)
+            {
+                return StatusCode(500, $"The operation timed out: {ex.Message}");
+            }
+            catch (NullReferenceException ex)
+            {
+                return StatusCode(500, $"An error occurred while processing your request: {ex.Message}");
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest($"An error occurred while processing your request: {ex.Message}");
+            }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Error: {ex.Message}");
+                return StatusCode(500, $"An error occurred while processing your request: {ex.Message}");
             }
         }
 
         [HttpPut("clear-items/{cartId}")]
-        public async Task<ActionResult<CartItem>> UpdateCartClearAllCartItems(int cartId)
+        public async Task<ActionResult<CartItem?>> UpdateCartClearAllCartItems(int cartId)
         {
             try
             {
@@ -210,16 +299,40 @@ namespace NotYourAverageBicepShoppingApp.CartsRestAPI.Controllers
 
                 }
             }
+            catch (DbUpdateException ex)
+            {
+                return StatusCode(500, $"Database error occurred: {ex.Message}");
+            }
+            catch (InvalidOperationException ex)
+            {
+                return StatusCode(500, $"Invalid operation: {ex.Message}");
+            }
+            catch (SqlException ex)
+            {
+                return StatusCode(500, $"An error occurred while processing your request: {ex.Message}");
+            }
+            catch (TimeoutException ex)
+            {
+                return StatusCode(500, $"The operation timed out: {ex.Message}");
+            }
+            catch (NullReferenceException ex)
+            {
+                return StatusCode(500, $"An error occurred while processing your request: {ex.Message}");
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest($"An error occurred while processing your request: {ex.Message}");
+            }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Error: {ex.Message}");
+                return StatusCode(500, $"An error occurred while processing your request: {ex.Message}");
             }
 
 
         }
 
         [HttpDelete("{cartId}")]
-        public async Task<ActionResult<Cart>> DeleteCart(int cartId)
+        public async Task<ActionResult<Cart?>> DeleteCart(int cartId)
         {
             try
             {
@@ -232,6 +345,14 @@ namespace NotYourAverageBicepShoppingApp.CartsRestAPI.Controllers
                 _cartContext.Carts.Remove(foundCart);
                 await _cartContext.SaveChangesAsync();
                 return this.Ok(foundCart);
+            }
+            catch (DbUpdateException ex)
+            {
+                return StatusCode(500, $"Database error occurred: {ex.Message}");
+            }
+            catch (InvalidOperationException ex)
+            {
+                return StatusCode(500, $"Invalid operation: {ex.Message}");
             }
             catch (Exception ex)
             {

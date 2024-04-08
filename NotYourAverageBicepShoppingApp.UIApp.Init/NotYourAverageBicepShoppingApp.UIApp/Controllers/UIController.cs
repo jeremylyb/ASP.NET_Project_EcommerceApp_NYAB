@@ -36,9 +36,13 @@ namespace NotYourAverageBicepShoppingApp.UIApp.Controllers
                 }
                 return View(products);
             }
+            catch (HttpRequestException ex)
+            {
+                return StatusCode(500, $"HTTP request error occurred while fetching products: {ex.Message}");
+            }
             catch (Exception ex)
             {
-                return StatusCode(500, ex);
+                return StatusCode(500, $"An error occurred while fetching products: {ex.Message}");
             }
         }
 
@@ -49,9 +53,13 @@ namespace NotYourAverageBicepShoppingApp.UIApp.Controllers
                 var product = await _productsClient.GetProductByIdAsync(id);
                 return View(product);
             }
+            catch (HttpRequestException ex)
+            {
+                return StatusCode(500, $"HTTP request error occurred while fetching product: {ex.Message}");
+            }
             catch (Exception ex)
             {
-                return StatusCode(500, ex);
+                return StatusCode(500, $"An error occurred while fetching product: {ex.Message}");
             }
         }
 
@@ -64,9 +72,13 @@ namespace NotYourAverageBicepShoppingApp.UIApp.Controllers
                 HttpContext.Session.SetString("CartId", cart.CartId.ToString());
                 return View(cart);
             }
+            catch (HttpRequestException ex)
+            {
+                return StatusCode(500, $"HTTP request error occurred while creating new cart: {ex.Message}");
+            }
             catch (Exception ex)
             {
-                return StatusCode(500, ex);
+                return StatusCode(500, $"An error occurred while creating new cart: {ex.Message}");
             }
 
         }
@@ -80,9 +92,13 @@ namespace NotYourAverageBicepShoppingApp.UIApp.Controllers
                 var cartDetailsDTO = await _cartsClient.GetAllCartItemsForCartAsync(cartId);
                 return View(cartDetailsDTO);
             }
+            catch (HttpRequestException ex)
+            {
+                return StatusCode(500, $"HTTP request error occurred while fetching cart details: {ex.Message}");
+            }
             catch (Exception ex)
             {
-                return StatusCode(500, ex);
+                return StatusCode(500, $"An error occurred while fetching cart details: {ex.Message}");
             }
         }
 
@@ -95,9 +111,13 @@ namespace NotYourAverageBicepShoppingApp.UIApp.Controllers
                 await _cartsClient.PutDeleteProductFromCartAsync(cartId, productId);
                 return RedirectToAction(nameof(ViewCart));
             }
+            catch (HttpRequestException ex)
+            {
+                return StatusCode(500, $"HTTP request error occurred while deleting product from cart: {ex.Message}");
+            }
             catch (Exception ex)
             {
-                return StatusCode(500, ex);
+                return StatusCode(500, $"An error occurred while deleting product from cart: {ex.Message}");
             }
 
         }
@@ -111,9 +131,13 @@ namespace NotYourAverageBicepShoppingApp.UIApp.Controllers
                 await _cartsClient.PutAddProductToCartAsync(cartId, productId, quantity);
                 return RedirectToAction(nameof(ViewCart));
             }
+            catch (HttpRequestException ex)
+            {
+                return StatusCode(500, $"HTTP request error occurred while adding product to cart: {ex.Message}");
+            }
             catch (Exception ex)
             {
-                return StatusCode(500, ex);
+                return StatusCode(500, $"An error occurred while adding product to cart: {ex.Message}");
             }
 
         }
@@ -127,9 +151,13 @@ namespace NotYourAverageBicepShoppingApp.UIApp.Controllers
                 await _cartsClient.PutDeleteAllProductsFromCartAsync(cartId);
                 return RedirectToAction(nameof(ViewCart));
             }
+            catch (HttpRequestException ex)
+            {
+                return StatusCode(500, $"HTTP request error occurred while deleting all products from cart: {ex.Message}");
+            }
             catch (Exception ex)
             {
-                return StatusCode(500, ex);
+                return StatusCode(500, $"An error occurred while deleting all products from cart: {ex.Message}");
             }
 
 
@@ -154,9 +182,13 @@ namespace NotYourAverageBicepShoppingApp.UIApp.Controllers
                 var orderAndCartItems = new OrderAndCartItems() { Order = order, CartDetailsDTO = cartDetailsDTO };
                 return View(orderAndCartItems);
             }
+            catch (HttpRequestException ex)
+            {
+                return StatusCode(500, $"HTTP request error occurred while creating new order: {ex.Message}");
+            }
             catch (Exception ex)
             {
-                return StatusCode(500, ex);
+                return StatusCode(500, $"An error occurred while creating new order: {ex.Message}");
             }
 
 

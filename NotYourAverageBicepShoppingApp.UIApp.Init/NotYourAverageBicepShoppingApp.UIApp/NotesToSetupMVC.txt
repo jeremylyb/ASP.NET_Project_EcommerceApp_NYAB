@@ -1,0 +1,252 @@
+﻿
+- Create view
+	- Create a Model folder in MVC project and copy Models from REST API
+		- MAke sure correct namespace
+	- In View cshtml, import the correct namespace MVC ViewModel Class so that can display the object info in web page
+	- In View, the Redirect URL configuration, make sure the tag helpers: asp-controller, asp-action, and (optional) asp-route-id are define correctly
+	- Redirection method -> Redirected to the Controller.cs file and method in MVC Controller folder. 
+	- MVC Controller method -> calls client method
+	- Client Method -> 
+
+
+		
+
+
+
+Steps:
+
+	Depending on how you plan to build, you can do the 
+		reverse engineering: 
+			- Define Controller methods that deliver page View requirements. Ie View that display all products 
+			- Controller methods utilize corresponding IClient method.
+			- Corresponding Client method extending IClient, utilize IHttpClientFactory to make use of REST APIs in the 
+				separate projects
+		Client - Controller approach:
+			- Develop all CRUD methods in Client class
+			- Define Controller methods using which ever Client method as and when.
+	In the following steps, we will adopt the reverse engineering approach, developing specific Controllers and based on the controller's requirements,
+		develop the corresponding Client Methods which will utilize the corrresponding CRUD methods from the REST APIs we created
+
+Entire Data flow
+User Interacts with UI -> Click Link in View Page -> Call asp-controller methods -> execute MVC Controller methods -> call MVC Client methods -> call REST API CRUD methods -> utilize DBContext CRUD methods
+-> return result upstream
+
+1.  Create Controllers and Views for our web page 
+	- In the Controller, dependency inject the Client in using constructor
+		Example:
+		        public LibraryController(IProductsClient productsClient, ICartsClient cartsClient, IOrdersClient orderClient)
+				{
+					_productsClient = productsClient;
+					_cartsClient = cartsClient;
+					_ordersClient = orderClient;
+				}
+	- Aside from dependency inject, we need to register the HttpClient in to the builder for our MVC project.
+		- This is done by configuring AddHttpClient and AddScoped to Service Container
+
+		builder.Services.AddHttpClient("ProductsApiClient",
+			httpClient =>
+			{
+				httpClient.DefaultRequestHeaders
+								.Accept
+								.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+				httpClient.BaseAddress = new Uri("https://localHost:7096");
+
+			});
+
+		builder.Services.AddScoped<IProductsClient, ProductsClient>();
+	- Refer to Notes.txt for more detailed explanation of AddHttpClient and AddScoped
+	- Make sure that the MapControllerRoute is mapping the right instantiating page.
+	        app.MapControllerRoute(
+            name: "default",
+            pattern: "{controller=Home}/{action=Index}/{id?}");
+	- NOTE: Whenever there is a new HTTP resource needed to be used in a controller, same steps need to be done, Dependency inject in Controller + Register Http client to builder
+	- 
+	- Ideally the Controllers should be structured according to Page View instead of REST API
+	- Test run app by starting all projects concurrently - REST API and UIApp. 
+	- Example Controller View Page Call Controller method code:
+		public async Task<IActionResult> AllProducts(string searchStr)
+        {
+            try
+            {
+                var products = await _productsClient.GetAllProductsAsync();
+                if (!string.IsNullOrWhiteSpace(searchStr))
+                {
+
+                    var filteredProducts = products?.Where(product => product.ProductName.Contains(searchStr)).OrderBy(product => product.ProductName).ToList();
+                    return View(filteredProducts);
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }  
+        }
+	- There are different return type available for the MVC Controller. Refer to Notes for full detail
+		1. return View()
+		2. return PartialView()
+		3. return Redirect()
+		- Refer to notes for more
+		- Note: 
+			- Depending on your view if it requires data, we can pass the object into View(object) accordingly
+			- In ASP.NET Core MVC, when you pass an object from a controller action to a ViewResult, the object is typically passed as the "model" to the corresponding view. 
+				This allows you to provide data to the view, which can then be used to dynamically generate the HTML content. Refer to Notes for full explanation
+	
+
+2. Create API Client Component to the respective REST API.
+	- We have to create these Client component in order to make use of the httpclient we created in the REST APIs
+	- Create the corresponding Model Class from REST API Project as ViewModels in MVC Project
+	- Make sure that the Controllers utilize MVC ViewModels Classes instead of REST API Model Classes
+	- Create 1 Interface Client and 1 Concrete Class Client, Interface-Class API structure. 
+	- Remember to add project reference into the UIApp project. The UIApp project need to reference classes from other project in order to use those API.
+	- In the Concrete Client Class, utilize IHttpClientFactory to manage the http resource:
+	- 2 ways to do it. 
+		1. Instantiate the HttpCLient and create client using the specific client directly if we are sure that the controller only utilize that particular API. 
+			Single HtttpClient Instance:
+				private readonly HttpClient _productsClient;
+
+				public ProductsClient(IHttpClientFactory httpClientFactory)
+				{
+					_productsClient = httpClientFactory.CreateClient("ProductsApiClient");
+				}
+
+		2. Allow flexibility and instantiate IHttpClientFactory. Create client at method level so as to allow flexibility for user to create multiple clients for a particular method
+			Using IHttpClientFactory in Each Method:
+
+				private readonly IHttpClientFactory _httpClientFactory;
+
+				public ProductsClient(IHttpClientFactory httpClientFactory)
+				{
+					_httpClientFactory = httpClientFactory;
+				}
+
+	- Once we instantiate the HttpClient, we can call the client methods which corresponds to calling the CRUD API methods in our REST API projects. 
+	- For each CRUD functions, we have specific Client methods to retrieve/send the data. Note that default is Json serialize. If want otherwise, need to 
+		add the requirements in the buillder => builder.Services.AddControllersWithViews().AddXmlSerializerFormatters();
+		- Create:
+			HttpResponseMessage response = client.PostAsync("/api/Carts", content);
+		- Read:
+			HttpResponseMessage response = client.GetAsync($"/api/Product/{id}")
+		- Read as stream:
+			Task<Stream> stream = client.GetStreamAsync("/api/Product"))
+		- Update:
+			HttpResponseMessage putResponse = await cartClient.PutAsync($"/api/Carts/{cartId}/add-product/{productId}", content);
+			HttpResponseMessage patctResponse = await _client.PatchAsync($"/api/Carts/{cartId}/remove-product/{productId}", patchDocument);
+		- Delete
+			HttpResponseMessage response = await cartClient.DeleteAsync($"/api/Carts/{id}")
+		- NOTE: 
+			- The above API URI construct should be consistent with what you have in your REST API.
+			- Aside from Read method, we can also do stream in others but uncommon in parsing streams REST API, since REST API constructs are typically using
+					default Json serializer.
+			- It is ideal to implement client side exception handling as well. For the purpose of this project, will implement a console print error message
+	- Example Client Call REST API CRUD Method Code:
+		public async Task<List<Product>?> GetAllProductsAsync()
+        {
+            try
+            {
+                var client = _httpClientFactory.CreateClient("ProductsApiClient");
+                var productsStreamTask = await client.GetStreamAsync("/api/Product");
+                return await JsonSerializer.DeserializeAsync<List<Product>>(productsStreamTask);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                throw;
+            }
+        }
+
+	- Steps to create each POST/PUT/GET/DELETE method in a MVC Client class
+		1. Post Method:
+			Step1 -> Create Client with the corresponding API String registered in MVC Program.cs file
+						
+						var client = _httpClientFactory.CreateClient()
+
+			Step2 -> Depending how object is instantiated, be it object passing in from front end or create an empty object:
+					a. An object instance is passed into the Post method (Object info from frontend)
+						- Serialize the object:
+
+								string jsonBook = JsonSerializer.Serialize(book, typeof(Book));
+
+							This line serializes the Book object into a JSON string using the JsonSerializer.Serialize method. It converts the book object into its 
+							JSON representation. The second parameter typeof(Book) specifies the type of the object being serialized.
+						- Create a StringContent Object in order to pass into a API Post Method call as parameter
+
+								StringContent content = new StringContent(jsonBook, System.Text.Encoding.UTF8, "application/json");:
+
+							This line creates a StringContent object representing the JSON payload to be sent in the POST request. It wraps the JSON string jsonBook 
+							created in the previous step. The System.Text.Encoding.UTF8 specifies the character encoding used for the content, and "application/json" 
+							indicates the content type.
+					b. Creating an empty object
+						- Create an empty StringContent Object directly.
+						            
+								var content = new StringContent("{}", System.Text.Encoding.UTF8, "application/json");
+
+			Step3 -> Pass the StringContent into Client Post Method
+
+			            HttpResponseMessage response = await client.PostAsync("/api/Carts", content);
+
+			Step4 -> With the http response, we can decide how what we want to return. But typically, for Post/Put, we may want to display the instance saved in database back
+						to the front end. Ie like the case for displaying a view of the newly created cart, or update of cart.
+					- If no further action required, process stops at step3 with no return type, Just : await client.PostAsync("/api/Carts", content);
+					- To return the created/updated object, we need to deserialize it again. BUT NOTE: we did PostAsync earlier. We can also opt for PostStreamAsync but is uncommmon to 
+						post non json. Hence, since we use PostAsync, we need to: response.ContentReadAsStreamAsync() so as to deserialize it again.
+
+							var responseBody = await response.Content.ReadAsStreamAsync();
+							return await JsonSerializer.DeserializeAsync<Book>(responseBody);
+
+
+
+
+3. Create View Page Construct
+	- NOTE:
+		- Make sure importing the correct MVC ViewModel class instead of REST API Model class
+		- Make sure the naming convention of View Page correspond to the Method in MVC Controller
+	- To execute functions through a URL which are:
+		    <a asp-controller="Library" asp-action="DeleteProductFromCart" asp-route-productId="@cartItem.Product.ProductId">Remove Product from Cart</a>
+	- Attributes
+		- asp-controller:
+			- This attribute is a tag helper attribute used to specify the name of the controller that will handle the HTTP request when the hyperlink is clicked.
+		- asp-action:
+			- This attribute is another tag helper attribute used to specify the name of the action method within the controller that will handle the HTTP request.
+		- asp-route-productId="@cartItem.Product.ProductId":
+			- This attribute is a tag helper attribute used to specify a route parameter named "productId".
+			- Route parameters are placeholders in the URL pattern that capture values from the request URL and pass them to the controller action method.
+				In the context of an ASP.NET Core MVC application, when a user interacts with a web page by clicking on a hyperlink, submitting a form, or performing 
+				any other action that triggers an HTTP request, a URL is constructed based on the route template defined in your application's routing configuration.
+				The request URL refers to the URL that is generated based on the route template and any route parameters included in the route pattern. When a user 
+				clicks on a hyperlink, the browser makes an HTTP request to the server using the URL specified in the hyperlink's href attribute. This URL typically 
+				includes the controller, action, and any route parameters needed to identify the requested resource.
+			- In this case, @cartItem.Product.ProductId is used to dynamically generate the value of the "productId" route parameter. The value is obtained from the 
+				ProductId property of the Product object associated with the cartItem.
+
+------------------------------------------------- Notes for REST API AND MVC PROJECTS -----------------------------------------------------------------------------
+
+- If you have multiple Dependency injection in REST API projects, make sure that the registration in Program.cs corresspond to your appsetting.json
+	particularly 1. make sure they are in the right namespace, and 2. the connectionString Key Value pair, the key is correct.
+
+        builder.Services.AddDbContext<NotYourAverageBicepShoppingApp.CartRestApi.Models.CartsNyabContext>(
+                options =>
+                {
+                    options.UseSqlServer(builder.Configuration.GetConnectionString("CRUDConnectionCart"));
+                });
+
+
+
+        builder.Services.AddDbContext<NotYourAverageBicepShoppingApp.CartRestApi.Models.ProductsNyabContext>(
+                options =>
+                {
+                    options.UseSqlServer(builder.Configuration.GetConnectionString("CRUDConnectionProduct"));
+                });
+
+	"ConnectionStrings": {
+		"CRUDConnectionCart": "Data Source=DESKTOP-DQUSH87; Initial Catalog=CartsAcme; Integrated Security=sspi; TrustServerCertificate=True;",
+		"CRUDConnectionProduct": "Data Source=DESKTOP-DQUSH87; Initial Catalog=ProductsAcme; Integrated Security=sspi; TrustServerCertificate=True;"
+	  }
+
+- Make sure to redefine json property name of your ModelView Classes. They need to be consistent with what is serilaize from DB
+- Can opt to use JsonIgnore in Class object to ignore certain attributes/property when serilizing 
+- Make sure that the redefine json property name is done property in complex ModelView in MVC projects. Ie nested classes in a ModelView class
