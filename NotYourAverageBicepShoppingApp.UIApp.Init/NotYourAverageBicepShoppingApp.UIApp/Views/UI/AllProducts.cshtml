@@ -4,20 +4,51 @@
     ViewData["Title"] = "AllProducts";
 }
 
-<h1>Click here to view your current cart items</h1>
-<a asp-controller="UI" asp-action="ViewCart">View Cart</a>
+<style>
+    /* Define CSS class for productName */
+    .productName {
+        font-size: 30px; /* Adjust font size as desired */
+        /* Add any other styling properties as needed */
+    }
 
-<h1>All Products</h1>
-<form asp-controller="UI" asp-action="AllProducts" method="get">
+    /* Style for the search form container */
+    .search-container {
+        display: flex; /* Use flexbox for layout */
+        justify-content: space-between; /* Align items with space between them */
+        align-items: center; /* Align items vertically */
+        margin-bottom: 20px; /* Add some bottom margin for spacing */
+    }
+
+    /* Style for the search form */
+    .search-form {
+        margin-left: auto; /* Push the search form to the far right */
+    }
+</style>
+
+<div class="search-container">
+<h1>Product List</h1>
+<form class="search-form" asp-controller="UI" asp-action="AllProducts" method="get">
     <input type="text" name="searchStr" placeholder="Product Name contains..." /> <br />
     <input type="submit" value="Search" />
 
 </form>
+</div>
+
+<hr />
 
 @foreach (var product in Model)
 {
-    <p>ProductId: @product.ProductId</p>
-    <p>ProductName: @product.ProductName</p>
-    <a asp-controller="UI" asp-action="OneProduct" asp-route-id="@product.ProductId">Details</a>
+    <div style="overflow: hidden;">
+        <div style="float: left;">
+            <p class="productName"> @product.ProductName </p>
+            <a asp-controller="UI" asp-action="OneProduct" asp-route-id="@product.ProductId">Details</a>
+        </div>
+        <div style="float: right;">
+            <img src="@product.ProductImage" alt="@product.ProductName" width="100px" />
+        </div>
+        <div style="clear: both;"></div>
+    </div>
     <hr />
 }
+
+

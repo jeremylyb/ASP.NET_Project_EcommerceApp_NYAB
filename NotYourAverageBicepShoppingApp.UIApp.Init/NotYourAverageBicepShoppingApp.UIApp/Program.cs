@@ -17,6 +17,7 @@ namespace NotYourAverageBicepShoppingApp.UIApp
                 options.IdleTimeout = TimeSpan.FromMinutes(30); // Adjust session timeout as needed
                 options.Cookie.IsEssential = true;
             });
+           
 
 
             builder.Services.AddHttpClient("ProductsApiClient",
@@ -75,7 +76,7 @@ namespace NotYourAverageBicepShoppingApp.UIApp
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=UI}/{action=Index}/{id?}");
+                pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.UseSession();
             app.Run();

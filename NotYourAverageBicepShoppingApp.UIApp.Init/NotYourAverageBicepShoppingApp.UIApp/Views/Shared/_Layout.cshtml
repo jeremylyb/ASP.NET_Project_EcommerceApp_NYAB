@@ -3,16 +3,28 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - NotYourAverageBicepShoppingApp.UIApp</title>
+    <title>@ViewData["Title"] - NYAB </title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/NotYourAverageBicepShoppingApp.UIApp.styles.css" asp-append-version="true" />
+    <style>
+        /* Increase font size of navbar links */
+        .navbar-nav .nav-link {
+            font-size: 18px;
+        }
+
+        /* Cart button */
+        .cart-button {
+            margin-left: auto; /* Push to the right */
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">NotYourAverageBicepShoppingApp.UIApp</a>
+                <img src="https://jeremylyb.github.io/images/gym_logo.jpg" alt="GymLogo" width="100px">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"> NYAB </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -23,11 +35,24 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="UI" asp-action="AllProducts">Products</a>
                         </li>
                     </ul>
+
+@*                     @{
+                        var cartAction = "NewCart";
+                        if (/* check if cart exists */)
+                        {
+                            cartAction = "ViewCart";
+                        }
+                    } *@
+                    <!-- Cart button -->
+                    <a class="nav-link text-dark" asp-area="" asp-controller="UI" asp-action="NewCart">View Cart</a>
                 </div>
             </div>
+
+
+
         </nav>
     </header>
     <div class="container">
@@ -38,7 +63,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - NotYourAverageBicepShoppingApp.UIApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2024 - NYAB - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

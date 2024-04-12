@@ -26,4 +26,22 @@ public partial class Product
     /// </summary>
     [JsonPropertyName("productPrice")]
     public decimal ProductPrice { get; set; }
+
+    /// <summary>
+    /// Gets or sets the image of the product.
+    /// </summary>
+    [JsonPropertyName("productImage")]
+    public string ProductImage { get; set; } = null!;
+
+    /// <summary>
+    /// Gets or sets the overview of the product.
+    /// </summary>
+    [JsonPropertyName("productOverview")]
+    public string ProductOverview { get; set; } = null!;
+
+    /// <summary>
+    /// Gets or sets the benefits of the product.
+    /// </summary>
+    [JsonPropertyName("productBenefits")]
+    public string ProductBenefits { get; set; } = null!;
 }

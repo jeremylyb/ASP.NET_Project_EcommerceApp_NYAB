@@ -3,7 +3,7 @@
     ViewData["Title"] = "OneProduct";
 }
 
-<h1>Product on Record</h1>
+<h1>@Model.ProductName</h1>
 
 @if (object.ReferenceEquals(Model, null))
 {
@@ -11,20 +11,53 @@
 }
 else
 {
-
-    <p>ProductId: @Model.ProductId</p>
-    <p>ProductName: @Model.ProductName</p>
-    <p>ProductPrice: @Model.ProductPrice</p>
-
-    @using (Html.BeginForm("AddProductToCart", "UI", FormMethod.Post))
-    {
-        <div>
-            <label for="quantity">Quantity:</label>
-            <input type="number" id="quantity" name="quantity" min="1" value="1" />
+     <div style="overflow: hidden;">
+        <div style="float: left; width: 50%;">
+            <!-- Float the image to the left and set its width to 50% -->
+            <img src="@Model.ProductImage" alt="@Model.ProductName" width="500px" />
         </div>
+        <div style="float: right; width: 50%;">
+            <!-- Float the information to the right and set its width to 50% -->
+            <h3>Product Information</h3>
+            @foreach (var line in Model.ProductOverview.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                <p>@line</p>
+            }
+            <h3>Product Benefits</h3>
+            <p>
+                <ul>
+                    @foreach (var line in Model.ProductBenefits.Split('\n'))
+                    {
+                        <li>@line</li>
+                    }
+                </ul>
+            </p>
+            <br />
+            <p>Product Id: @Model.ProductId</p>
+            <p>Product Name: @Model.ProductName</p>
+            <p>Product Price: @Model.ProductPrice</p>
+            <br />
+            @using (Html.BeginForm("AddProductToCart", "UI", FormMethod.Post))
+            {
+                <div>
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" value="1" />
+                </div>
+                <input type="hidden" name="productId" value="@Model.ProductId" />
 
-        <input type="hidden" name="productId" value="@Model.ProductId" />
-        <input type="submit" value="Add to Cart" />
-    }
+                <br />
+
+                <input type="submit" value="Add to Cart" /> 
+
+                <br />
+
+                <a asp-controller="UI" asp-action="AllProducts">Return back to Product list!</a>
+
+                <br />
+            }
+        </div>
+        <div style="clear: both;"></div> <!-- Clear the floats to ensure proper layout -->
+    </div>
+
 
 }
