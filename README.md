@@ -71,3 +71,15 @@
   7 - 8 April 2024 : Enhancement
   12. Allow to add multiple quantity of one product (Completed - Refer to Commit History for further enhancement complications)
   7. Look into Customized exception handling (WIP. Compelted for CartController, CartClient, UiController)
+
+  11-12 April 2024 : Enhancement
+  2. All Products link currently display all product details. (Completed)
+     - Change the display of full info in OneProduct View.
+     - Add return to main index page
+  3. OneProduct View page (Completed)
+     - Add return to AllProducts view page
+
+  - Added images, product overview and product benefit to the AllProducts and OneProduct view. Currently using random images
+  - Added a main page banner and logo to navbar. Hosted locally saved images to Github. Learned a new thing - able to host images on github.
+  - Currently stuck with creating a logic to allow dynamic view cart. On first click, it actually creates new cart for user. Subsequent clicks of the Cart button on navbar should direct to view cart.
+  - Upgraded the 
