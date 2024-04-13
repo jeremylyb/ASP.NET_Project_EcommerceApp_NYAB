@@ -151,32 +151,66 @@ namespace NotYourAverageBicepShoppingApp.CartsRestAPI.Controllers
                 }
                 else
                 {
-                    CartItem newCartItem = new CartItem() { ProductId = productId, FkCartId = cartId, Quantity = quantity };
-                    _cartContext.CartItems.Add(newCartItem);
-                    var existingCart = await _cartContext.Carts.FindAsync(cartId);
-                    if (object.ReferenceEquals(existingCart, null))
+                    var existingCartItem = await _cartContext.CartItems.FirstOrDefaultAsync(c=>c.ProductId==productId && c.FkCartId==cartId);
+
+                    if (object.ReferenceEquals(existingCartItem, null))
                     {
-                        return this.NotFound();
-                    }
-                    else
-                    {
-                        if (object.ReferenceEquals(existingCart.CartPrice, null))
+                        CartItem newCartItem = new CartItem() { ProductId = productId, FkCartId = cartId, Quantity = quantity };
+                        _cartContext.CartItems.Add(newCartItem);
+                        var existingCart = await _cartContext.Carts.FindAsync(cartId);
+                        if (object.ReferenceEquals(existingCart, null))
                         {
-                            existingCart.CartPrice = existingProduct.ProductPrice*quantity;
-                            await _cartContext.SaveChangesAsync();
-                            return this.Ok(existingCart);
+                            return this.NotFound();
                         }
                         else
                         {
-                            for (int i = 0; i<quantity; i++)
+                            if (object.ReferenceEquals(existingCart.CartPrice, null))
                             {
-                                existingCart.CartPrice += existingProduct.ProductPrice;
+                                existingCart.CartPrice = existingProduct.ProductPrice * quantity;
+                                await _cartContext.SaveChangesAsync();
+                                return this.Ok(existingCart);
                             }
+                            else
+                            {
+                                for (int i = 0; i < quantity; i++)
+                                {
+                                    existingCart.CartPrice += existingProduct.ProductPrice;
+                                }
 
-                            await _cartContext.SaveChangesAsync();
-                            return this.Ok(existingCart);
+                                await _cartContext.SaveChangesAsync();
+                                return this.Ok(existingCart);
+                            }
                         }
                     }
+                    else
+                    {
+                        existingCartItem.Quantity += quantity;
+                        var existingCart = await _cartContext.Carts.FindAsync(cartId);
+                        if (object.ReferenceEquals(existingCart, null))
+                        {
+                            return this.NotFound();
+                        }
+                        else
+                        {
+                            if (object.ReferenceEquals(existingCart.CartPrice, null))
+                            {
+                                existingCart.CartPrice = existingProduct.ProductPrice * quantity;
+                                await _cartContext.SaveChangesAsync();
+                                return this.Ok(existingCart);
+                            }
+                            else
+                            {
+                                for (int i = 0; i < quantity; i++)
+                                {
+                                    existingCart.CartPrice += existingProduct.ProductPrice;
+                                }
+
+                                await _cartContext.SaveChangesAsync();
+                                return this.Ok(existingCart);
+                            }
+                        }
+                    }
+
                 }
             }
             catch (DbUpdateException ex)
@@ -219,6 +253,8 @@ namespace NotYourAverageBicepShoppingApp.CartsRestAPI.Controllers
             var existingCartItems = await _cartContext.CartItems
                                             .Where(item => item.FkCartId == cartId && item.ProductId == productId)
                                             .ToListAsync();
+
+
             if (object.ReferenceEquals(existingCartItems, null))
             {
                 return this.NotFound();
