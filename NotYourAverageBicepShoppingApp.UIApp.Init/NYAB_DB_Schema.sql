@@ -58,6 +58,44 @@ INSERT INTO [ProductsNYAB].[dbo].Products (Product_Name, Product_Price, Product_
 			Great way to increase daily vitamin intake
 			Easy-to-take tablet at a low price'
 			)
+
+INSERT INTO [ProductsNYAB].[dbo].Products (Product_Name, Product_Price, Product_Image, Product_Overview, Product_Benefits) 
+	VALUES ( 
+		'Creatine Monohydrate Capsules', 
+		99.99, 
+		'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/android/android-plain.svg', 
+		'Our creatine monohydrate tablets are a super-convenient way to get the scientifically proven benefits of creatine, helping you to improve your performance workout after workout.
+		Creatine has been shown to increase physical performance in successive bursts of short-term, high-intensity exercise,1 making this the perfect supplement to boost your training and help you reach fitness goals.  
+		Getting creatine from your diet alone can be difficult as it’s mainly found in meat and fish — our tablets provide a quick way to hit your daily requirements without the fuss of meal prep, plus they’re vegetarian-friendly.',
+		'Ideal for power based sports
+		1 tablet gives 1g Creatine
+		Can help improve strength and power'
+)
+INSERT INTO [ProductsNYAB].[dbo].Products (Product_Name, Product_Price, Product_Image, Product_Overview, Product_Benefits) 
+	VALUES ( 
+		'Essential BCAA Tablets', 
+		24.99, 
+		'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/threedsmax/threedsmax-original.svg', 
+		'The essential amino acid supplement, containing an optimal 2:1:1 ratio of leucine, isoleucine, and valine. Each of these naturally occur in protein, which helps to build and repair new muscle.
+		These three essential amino acids can’t be produced by your body, so they must come from your diet — making our super-convenient tablets a must-have, whether you’re looking to gain muscle, tone-up, or lose weight.
+		It also includes the essential vitamin B6 to help keep you sharp, your defences high, and always feeling on top of your game in and out of the gym.',
+		'Helps maintain body tissue
+		Can boost lean mass
+		Extremely popular amino acids'
+)
+INSERT INTO [ProductsNYAB].[dbo].Products (Product_Name, Product_Price, Product_Image, Product_Overview, Product_Benefits) 
+	VALUES ( 
+		'Pre-Workout Gummies', 
+		29.99, 
+		'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apacheairflow/apacheairflow-plain.svg', 
+		'Our powerful Pre-Workout Gummies are packed with a whole host of widely researched ingredients — including citrulline, taurine, B vitamins, and caffeine to take your training to the next level.
+		To help you get the most from every session and push beyond your limits, each four gummy serving delivers 20mg of caffeine, which helps improve your endurance performance and capacity. And, caffeine will make sure nothing gets in the way of your focus.
+		Plus, there’s the added vitamin B6 helps to reduce tiredness and fatigue,3 contribute to normal psychological performance, while supporting the normal function of the immune system.
+		But, that’s not all. We’ve added 800mg of citrulline and 400mg of taurine, a naturally occurring amino acid, that’s found in high concentrations in white blood cells, skeletal muscles, central nervous system, and heart muscles.',
+		'Delicious blueberry flavour
+		Convenient for on-the-go use
+		20mg of caffeine per servingr'
+)
 GO 
 
 CREATE DATABASE CartsNYAB
@@ -73,6 +111,7 @@ GO
 CREATE TABLE [CartsNYAB].[dbo].Cart_Items (
 Cart_Item_Id int NOT NULL PRIMARY KEY IDENTITY(2000001, 1),
 Product_Id int NOT NULL,
+Quantity int NOT Null,
 Fk_Cart_Id int NOT NULL FOREIGN KEY (Fk_Cart_Id) REFERENCES
 [CartsNYAB].[dbo].Carts(Cart_Id))
 GO
@@ -117,8 +156,8 @@ GO
 
 USE CartsNYAB
 GO
-select * from Carts
-go
+--select * from Carts
+--go
 select * from Cart_Items
 go
 

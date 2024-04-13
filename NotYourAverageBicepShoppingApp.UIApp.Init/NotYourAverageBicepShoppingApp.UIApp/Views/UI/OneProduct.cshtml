@@ -68,10 +68,14 @@ else
                         <input type="number" id="quantity" name="quantity" min="1" value="1" />
                     </div>
 
+                    <br />
+
                     <input type="hidden" name="productId" value="@Model.ProductId" />
                     <button type="submit">Create Cart First!</button>
                 }
             }
+
+            <br />
 
             <a asp-controller="UI" asp-action="AllProducts">Return back to Product list!</a>
             <br />
