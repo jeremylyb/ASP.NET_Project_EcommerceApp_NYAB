@@ -111,7 +111,7 @@ GO
 CREATE TABLE [CartsNYAB].[dbo].Cart_Items (
 Cart_Item_Id int NOT NULL PRIMARY KEY IDENTITY(2000001, 1),
 Product_Id int NOT NULL,
-Quantity int NOT Null,
+Quantity int NOT NULL,
 Fk_Cart_Id int NOT NULL FOREIGN KEY (Fk_Cart_Id) REFERENCES
 [CartsNYAB].[dbo].Carts(Cart_Id))
 GO
@@ -156,8 +156,8 @@ GO
 
 USE CartsNYAB
 GO
---select * from Carts
---go
+select * from Carts
+go
 select * from Cart_Items
 go
 

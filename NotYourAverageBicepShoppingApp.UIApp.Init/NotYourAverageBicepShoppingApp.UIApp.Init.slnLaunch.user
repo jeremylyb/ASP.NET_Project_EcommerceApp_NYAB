@@ -4,7 +4,8 @@
     "Projects": [
       {
         "Name": "NotYourAverageBicepShoppingApp.UIApp\\NotYourAverageBicepShoppingApp.UIApp.csproj",
-        "Action": "Start"
+        "Action": "Start",
+        "DebugTarget": ""
       },
       {
         "Name": "..\\NotYourAverageBicepShoppingApp.ProductsRestAPI\\NotYourAverageBicepShoppingApp.ProductsRestAPI.csproj",

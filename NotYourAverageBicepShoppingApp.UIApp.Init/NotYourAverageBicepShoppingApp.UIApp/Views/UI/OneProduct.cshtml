@@ -56,7 +56,13 @@ else
                     </div>
 
                     <input type="hidden" name="productId" value="@Model.ProductId" />
-                    <input type="submit" value="Add to Cart" />
+
+                    <br />
+
+                    <div>
+                        <button type="submit" class="btn btn-primary">Add to Cart</button>
+                    </div>
+
                 }
             }
             else if (cartAction == "NewCart")
@@ -68,17 +74,23 @@ else
                         <input type="number" id="quantity" name="quantity" min="1" value="1" />
                     </div>
 
+                    <input type="hidden" name="productId" value="@Model.ProductId" />
+
                     <br />
 
-                    <input type="hidden" name="productId" value="@Model.ProductId" />
-                    <button type="submit">Create Cart First!</button>
+                    <div>
+                        <button type="submit" class="btn btn-primary">Create Cart First!</button>
+                    </div>
                 }
             }
 
             <br />
 
-            <a asp-controller="UI" asp-action="AllProducts">Return back to Product list!</a>
-            <br />
+            <div>
+                <form asp-controller="UI" asp-action="AllProducts" method="post" style="display: inline-block;">
+                    <button type="submit" class="btn btn-primary">Continue Shopping!</button>
+                </form>
+            </div>
 
         </div>
         <div style="clear: both;"></div> <!-- Clear the floats to ensure proper layout -->

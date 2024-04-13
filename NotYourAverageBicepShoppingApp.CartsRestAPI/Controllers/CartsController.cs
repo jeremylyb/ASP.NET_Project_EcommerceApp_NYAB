@@ -151,12 +151,8 @@ namespace NotYourAverageBicepShoppingApp.CartsRestAPI.Controllers
                 }
                 else
                 {
-
-                    for (int i = 0; i < quantity; i++)
-                    {
-                        CartItem newCartItem = new CartItem() { ProductId = productId, FkCartId = cartId };
-                        _cartContext.CartItems.Add(newCartItem);
-                    }
+                    CartItem newCartItem = new CartItem() { ProductId = productId, FkCartId = cartId, Quantity = quantity };
+                    _cartContext.CartItems.Add(newCartItem);
                     var existingCart = await _cartContext.Carts.FindAsync(cartId);
                     if (object.ReferenceEquals(existingCart, null))
                     {
@@ -234,9 +230,7 @@ namespace NotYourAverageBicepShoppingApp.CartsRestAPI.Controllers
                     _cartContext.CartItems.Remove(existingCartItem);
                     var existingCart = await _cartContext.Carts.FindAsync(cartId);
                     var existingProduct = await _productContext.Products.FindAsync(productId);
-                    existingCart.CartPrice -= existingProduct.ProductPrice;
-
-
+                    existingCart.CartPrice -= existingProduct.ProductPrice*existingCartItem.Quantity;
                 }
                 await _cartContext.SaveChangesAsync();
                 return this.Ok(existingCartItems);
@@ -290,10 +284,12 @@ namespace NotYourAverageBicepShoppingApp.CartsRestAPI.Controllers
                     foreach (var existingCartItem in existingCartItems)
                     {
                         _cartContext.CartItems.Remove(existingCartItem);
-                        var existingCart = await _cartContext.Carts.FindAsync(cartId);
+
                         var existingProduct = await _productContext.Products.FindAsync(existingCartItem.ProductId);
-                        existingCart.CartPrice -= existingProduct.ProductPrice;
+                        
                     }
+                    var existingCart = await _cartContext.Carts.FindAsync(cartId);
+                    existingCart.CartPrice = 0;
                     await _cartContext.SaveChangesAsync();
                     return this.Ok(existingCartItems);
 
