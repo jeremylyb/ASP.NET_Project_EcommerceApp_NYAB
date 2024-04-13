@@ -85,3 +85,4 @@
 
  13 April 2024 : Enhancement
  - Manage to incorporate Session into view such that we will be able to pull out CartId we saved using HttpContext.Session in UIController in MVC project. This allows us to utilize the variable to create a condition to check if the cart has already been created or not. If created -> direct to ViewCart View, else -> direct to NewCart View
+ - Implemented check if user have created a cart first. If not created, direct to NewCart Method, else ViewCart method. This apply to when move to AllProduct->Oneproduct page and try to add product. Through there, User will see Create Cart First! button instead of Add Product button. Once created, from OneProduct Page will show Add Product Button.
