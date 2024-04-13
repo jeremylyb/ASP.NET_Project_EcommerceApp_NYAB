@@ -82,3 +82,6 @@
   - Added a main page banner and logo to navbar. Hosted locally saved images to Github. Learned a new thing - able to host images on github.
   - Currently stuck with creating a logic to allow dynamic view cart. On first click, it actually creates new cart for user. Subsequent clicks of the Cart button on navbar should direct to view cart.
   - Updated the Database with the DB script to include product overview, benefit and image
+
+ 13 April 2024 : Enhancement
+ - Manage to incorporate Session into view such that we will be able to pull out CartId we saved using HttpContext.Session in UIController in MVC project. This allows us to utilize the variable to create a condition to check if the cart has already been created or not. If created -> direct to ViewCart View, else -> direct to NewCart View
