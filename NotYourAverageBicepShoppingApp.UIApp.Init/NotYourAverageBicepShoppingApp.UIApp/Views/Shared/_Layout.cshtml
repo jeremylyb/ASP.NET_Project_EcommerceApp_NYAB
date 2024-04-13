@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -6,7 +9,7 @@
     <title>@ViewData["Title"] - NYAB </title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/NotYourAverageBicepShoppingApp.UIApp.styles.css" asp-append-version="true" />
+    
     <style>
         /* Increase font size of navbar links */
         .navbar-nav .nav-link {
@@ -39,15 +42,17 @@
                         </li>
                     </ul>
 
-@*                     @{
+                    @{
+                        var session = HttpContextAccessor.HttpContext.Session;
                         var cartAction = "NewCart";
-                        if (/* check if cart exists */)
+
+                        if (!Object.ReferenceEquals(session.GetString("CartId"), null))
                         {
                             cartAction = "ViewCart";
                         }
-                    } *@
+                    }
                     <!-- Cart button -->
-                    <a class="nav-link text-dark" asp-area="" asp-controller="UI" asp-action="NewCart">View Cart</a>
+                    <a class="nav-link text-dark" asp-area="" asp-controller="UI" asp-action=@cartAction>View Cart</a>
                 </div>
             </div>
 

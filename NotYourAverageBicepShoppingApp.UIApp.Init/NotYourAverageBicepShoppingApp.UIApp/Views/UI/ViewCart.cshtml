@@ -5,30 +5,47 @@
 }
 
 
-<a asp-controller="UI" asp-action="AllProducts">Return back to All Products!</a>
-<br />
+<div align="center">
+    <form asp-controller="UI" asp-action="AllProducts" method="post" style="display: inline-block;">
+        <button type="submit" class="btn btn-primary">Continue Shopping!</button>
+    </form>
+    <form asp-controller="UI" asp-action="DeleteAllProductsFromCart" method="post" style="display: inline-block;">
+        <button type="submit" class="btn btn-danger">Remove all items in Cart!</button>
+    </form>
+    <form asp-controller="UI" asp-action="NewOrderBefore" method="post" style="display: inline-block;">
+        <button type="submit" class="btn btn-success">Checkout Securely Now!</button>
+    </form>
+</div>
 
-<a asp-controller="UI" asp-action="DeleteAllProductsFromCart">Remove all items in Cart!</a>
-<br />
-
-<a asp-controller="UI" asp-action="NewOrderBefore">Time to Checkout!</a>
-
-<br />
-
-<h1>Cart Items Total Price: @Model.Cart.CartPrice</h1>
-
-<br />
-
-<h1>Cart Records</h1>
+<h1> Your Cart </h1>
 
 @foreach (var cartItem in Model.CartItemsWithProducts)
 {
-    <p>ProductId: @cartItem.Product.ProductId</p>
-    <p>ProductId: @cartItem.Product.ProductName</p>
-    <p>ProductPrice: @cartItem.Product.ProductPrice</p>
+    <div style="overflow: hidden;">
+        <div style="float: left;">
+            <p>Product ID: @cartItem.Product.ProductId</p>
+            <p>Product Name: @cartItem.Product.ProductName</p>
+            <p>Product Price: @cartItem.Product.ProductPrice</p>
+        </div>
+        <div style="float: right;">
+            <img src="@cartItem.Product.ProductImage" alt="@cartItem.Product.ProductName" width="150px" />
+        </div>
+        <div style="clear: both;"></div>
+    </div>
 
-    <a asp-controller="UI" asp-action="DeleteProductFromCart" asp-route-productId="@cartItem.Product.ProductId">Remove Product from Cart</a>
+
+    <form asp-controller="UI" asp-action="DeleteProductFromCart" method="post" style="display: inline-block;">
+        <input type="hidden" name="productId" value="@cartItem.Product.ProductId" />
+        <button type="submit" class="btn btn-danger">Remove Product!</button>
+    </form>
+
     <hr />
 
 
 }
+
+<br />
+
+<h1 align="right">Cart Total: @Model.Cart.CartPrice</h1>
+
+<br />

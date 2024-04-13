@@ -1,4 +1,7 @@
-﻿@model NotYourAverageBicepShoppingApp.UIApp.Models.Product
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@model NotYourAverageBicepShoppingApp.UIApp.Models.Product
 @{
     ViewData["Title"] = "OneProduct";
 }
@@ -37,24 +40,42 @@ else
             <p>Product Name: @Model.ProductName</p>
             <p>Product Price: @Model.ProductPrice</p>
             <br />
-            @using (Html.BeginForm("AddProductToCart", "UI", FormMethod.Post))
-            {
-                <div>
-                    <label for="quantity">Quantity:</label>
-                    <input type="number" id="quantity" name="quantity" min="1" value="1" />
-                </div>
-                <input type="hidden" name="productId" value="@Model.ProductId" />
-
-                <br />
-
-                <input type="submit" value="Add to Cart" /> 
-
-                <br />
-
-                <a asp-controller="UI" asp-action="AllProducts">Return back to Product list!</a>
-
-                <br />
+            @{
+                var session = HttpContextAccessor.HttpContext.Session;
+                var cartAction = session.GetString("CartId") != null ? "ViewCart" : "NewCart";
+                var formAction = cartAction == "NewCart" ? Url.Action("NewCart", "UI") : Url.Action("AddProductToCart", "UI");
             }
+
+            @if (cartAction == "ViewCart")
+            {
+                using (Html.BeginForm("AddProductToCart", "UI", FormMethod.Post))
+                {
+                    <div>
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" id="quantity" name="quantity" min="1" value="1" />
+                    </div>
+
+                    <input type="hidden" name="productId" value="@Model.ProductId" />
+                    <input type="submit" value="Add to Cart" />
+                }
+            }
+            else if (cartAction == "NewCart")
+            {
+                using (Html.BeginForm("NewCart", "UI", FormMethod.Post))
+                {
+                    <div>
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" id="quantity" name="quantity" min="1" value="1" />
+                    </div>
+
+                    <input type="hidden" name="productId" value="@Model.ProductId" />
+                    <button type="submit">Create Cart First!</button>
+                }
+            }
+
+            <a asp-controller="UI" asp-action="AllProducts">Return back to Product list!</a>
+            <br />
+
         </div>
         <div style="clear: both;"></div> <!-- Clear the floats to ensure proper layout -->
     </div>
