@@ -7,8 +7,16 @@
  
 <form asp-controller="UI" asp-action="NewOrderAfter">
 
-    <label asp-for="@Model.CustomerName"> </label><br />
-    <input type="text" asp-for="@Model.CustomerName" /> <br />
+    <label asp-for="@Model.CustomerName"> Customer Name: </label><br />
+    <input type="text" asp-for="@Model.CustomerName" required/> <br />
+
+    <label asp-for="@Model.CustomerAddress"> Customer Address </label><br />
+    <input type="text" asp-for="@Model.CustomerAddress" required/> <br />
+
+    <label asp-for="@Model.CustomerCreditCardNumber"> Customer Credit Card No </label><br />
+    <input type="text" asp-for="@Model.CustomerCreditCardNumber" required/> <br />
+
+    <br />
 
     <input type="submit" />
 </form>

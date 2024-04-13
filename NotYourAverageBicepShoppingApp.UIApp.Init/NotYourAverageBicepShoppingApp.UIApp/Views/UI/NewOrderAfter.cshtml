@@ -3,22 +3,24 @@
     ViewData["Title"] = "New Order After";
 }
 
-<h1>New Invoice </h1>
+<h1>Invoice </h1>
 <br/>
 
 <h3>Order ID: @Model.Order.OrderId</h3>
-<h3>Cart ID: @Model.Order.CartId</h3>
 <h3>Customer Name: @Model.Order.CustomerName</h3>
+<h3>Delivery Address: @Model.Order.CustomerAddress</h3>
 <h3>Total Payment: @Model.CartDetailsDTO.Cart.CartPrice</h3>
 <hr />
 
+<h2>List of Purchases </h2>
 @foreach (var cartItem in Model.CartDetailsDTO.CartItemsWithProducts)
 {
-    <p>ProductId: @cartItem.Product.ProductId</p>
-    <p>ProductId: @cartItem.Product.ProductName</p>
-    <p>ProductPrice: @cartItem.Product.ProductPrice</p>
+    <p>Product Id: @cartItem.Product.ProductId</p>
+    <p>Product Name: @cartItem.Product.ProductName</p>
+    <p>Product Price: @cartItem.Product.ProductPrice</p>
+    <p>Quantity: @cartItem.CartItem.Quantity</p>
     <br/>
 }
 
-<a asp-controller="UI" asp-action="Index">Go Back to shopping again! Remember to create a new Cart!</a>
+<a asp-controller="UI" asp-action="AllProducts">Continue Shopping!</a>
 <br />

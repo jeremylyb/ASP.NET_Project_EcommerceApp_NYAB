@@ -67,7 +67,7 @@ else
             }
             else if (cartAction == "NewCart")
             {
-                using (Html.BeginForm("NewCart", "UI", FormMethod.Post))
+                using (Html.BeginForm("NewCartFromOneProduct", "UI", FormMethod.Post))
                 {
                     <div>
                         <label for="quantity">Quantity:</label>
@@ -79,7 +79,7 @@ else
                     <br />
 
                     <div>
-                        <button type="submit" class="btn btn-primary">Create Cart First!</button>
+                        <button type="submit" class="btn btn-primary">Add to Cart</button>
                     </div>
                 }
             }

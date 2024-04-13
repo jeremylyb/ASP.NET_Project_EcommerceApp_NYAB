@@ -9,5 +9,9 @@ public partial class Order
 
     public string CustomerName { get; set; } = null!;
 
+    public string CustomerAddress { get; set; } = null!;
+
+    public string CustomerCreditCardNumber { get; set; } = null!;
+
     public int CartId { get; set; }
 }

@@ -70,7 +70,27 @@ namespace NotYourAverageBicepShoppingApp.UIApp.Controllers
             {
                 var cart = await _cartsClient.PostNewCartAsync();
                 HttpContext.Session.SetString("CartId", cart.CartId.ToString());
-                return View(cart);
+                //return View(cart);
+                return RedirectToAction(nameof(ViewCart));
+            }
+            catch (HttpRequestException ex)
+            {
+                return StatusCode(500, $"HTTP request error occurred while creating new cart: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred while creating new cart: {ex.Message}");
+            }
+
+        }
+
+        public async Task<IActionResult> NewCartFromOneProduct(int productId, int quantity)
+        {
+            try
+            {
+                var cart = await _cartsClient.PostNewCartAsync();
+                HttpContext.Session.SetString("CartId", cart.CartId.ToString());
+                return await AddProductToCart(productId, quantity);
             }
             catch (HttpRequestException ex)
             {
@@ -207,7 +227,7 @@ namespace NotYourAverageBicepShoppingApp.UIApp.Controllers
             return View();
         }
 
-        public async Task<IActionResult> NewOrderAfter([Bind("CustomerName")] Order order)
+        public async Task<IActionResult> NewOrderAfter([Bind("CustomerName", "CustomerAddress", "CustomerCreditCardNumber")] Order order)
         {
             try
             {
@@ -217,6 +237,7 @@ namespace NotYourAverageBicepShoppingApp.UIApp.Controllers
                 order = await _ordersClient.PostOrders(order);
                 var cartDetailsDTO = await _cartsClient.GetAllCartItemsForCartAsync(cartId);
                 var orderAndCartItems = new OrderAndCartItems() { Order = order, CartDetailsDTO = cartDetailsDTO };
+                await _cartsClient.PutDeleteAllProductsFromCartAsync(cartId);
                 return View(orderAndCartItems);
             }
             catch (HttpRequestException ex)

@@ -14,4 +14,10 @@ public partial class Order
 
     [JsonPropertyName("cartId")]
     public int CartId { get; set; }
+
+    [JsonPropertyName("customerAddress")]
+    public string CustomerAddress { get; set; } = null!;
+
+    [JsonPropertyName("customerCreditCardNumber")]
+    public string CustomerCreditCardNumber { get; set; } = null!;
 }
