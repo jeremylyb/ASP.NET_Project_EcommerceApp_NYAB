@@ -27,6 +27,35 @@
             <p>Product Name: @cartItem.Product.ProductName</p>
             <p>Product Price: @cartItem.Product.ProductPrice</p>
             <p>Quantity: @cartItem.CartItem.Quantity</p>
+
+            @using (Html.BeginForm("AddDeleteProductFromCart", "UI", FormMethod.Post))
+            {
+                <div style="display: inline-block;">
+                    <label for="quantity">Quantity To Add:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" value="1" />
+                </div>
+
+                <input type="hidden" name="productId" value="@cartItem.Product.ProductId" />
+
+                <div style="display: inline-block;">
+                    <button type="submit" name="action" value="add" class="btn btn-primary" style="background-color: darkorange; border-color: darkorange;">Add quantity</button>
+                </div>
+            }
+
+            @using (Html.BeginForm("AddDeleteProductFromCart", "UI", FormMethod.Post))
+            {
+                <div style="display: inline-block;">
+                    <label for="quantity">Quantity To Remove:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" max="@cartItem.CartItem.Quantity" value="1" />
+                </div>
+
+                <input type="hidden" name="productId" value="@cartItem.Product.ProductId" />
+
+                <div style="display: inline-block;">
+                    <button type="submit" name="action" value="reduce" class="btn btn-danger" style="background-color: darkorange; border-color: darkorange;">Reduce quantity</button>
+                </div>
+            }
+
         </div>
         <div style="float: right;">
             <img src="@cartItem.Product.ProductImage" alt="@cartItem.Product.ProductName" width="150px" />

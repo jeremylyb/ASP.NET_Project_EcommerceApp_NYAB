@@ -142,6 +142,41 @@ namespace NotYourAverageBicepShoppingApp.UIApp.Controllers
 
         }
 
+        public async Task<IActionResult> ReduceProductFromCart(int productId, int quantity)
+        {
+            string? cartIdString = HttpContext.Session.GetString("CartId");
+            try
+            {
+                int.TryParse(cartIdString, out int cartId);
+                await _cartsClient.PutReduceProductFromCartAsync(cartId, productId, quantity);
+                return RedirectToAction(nameof(ViewCart));
+            }
+            catch (HttpRequestException ex)
+            {
+                return StatusCode(500, $"HTTP request error occurred while adding product to cart: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred while adding product to cart: {ex.Message}");
+            }
+
+        }
+
+        public async Task<IActionResult> AddDeleteProductFromCart(int productId, int quantity, string action)
+        {
+            if (action == "add")
+            {
+                return await AddProductToCart(productId, quantity);
+
+            }
+            else
+            {
+                return await ReduceProductFromCart(productId, quantity);
+
+            }
+
+        }
+
         public async Task<IActionResult> DeleteAllProductsFromCart()
         {
             try
@@ -162,6 +197,8 @@ namespace NotYourAverageBicepShoppingApp.UIApp.Controllers
 
 
         }
+
+
 
 
         //************************ Orders Related MVC Controller Methods ******************************************

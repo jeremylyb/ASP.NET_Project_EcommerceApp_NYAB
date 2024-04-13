@@ -129,6 +129,42 @@
   },
   {
     "ContainingType": "NotYourAverageBicepShoppingApp.CartsRestAPI.Controllers.CartsController",
+    "Method": "UpdateCartReduceProduct",
+    "RelativePath": "api/Carts/{cartId}/reduce-product/{productId}/{quantity}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cartId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "quantity",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "NotYourAverageBicepShoppingApp.CartsRestAPI.Models.Cart",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NotYourAverageBicepShoppingApp.CartsRestAPI.Controllers.CartsController",
     "Method": "UpdateCartRemoveProduct",
     "RelativePath": "api/Carts/{cartId}/remove-product/{productId}",
     "HttpMethod": "PUT",

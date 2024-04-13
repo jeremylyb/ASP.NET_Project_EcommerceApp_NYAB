@@ -97,6 +97,38 @@ namespace NotYourAverageBicepShoppingApp.UIApp.APIClient
                 throw;
             }
         }
+
+        public async Task<CartItem?> PutReduceProductFromCartAsync(int cartId, int productId, int quantity)
+        {
+            try
+            {
+                var cartClient = _httpClientFactory.CreateClient("CartsApiClient");
+                var productClient = _httpClientFactory.CreateClient("ProductsApiClient");
+                var productsStreamTask = await productClient.GetStreamAsync($"/api/Products/{productId}");
+                var productJsonDeserialize = await JsonSerializer.DeserializeAsync<Product?>(productsStreamTask);
+                string productJson = JsonSerializer.Serialize(productJsonDeserialize, typeof(Product));
+                StringContent content = new StringContent(productJson, System.Text.Encoding.UTF8, "application/json");
+                HttpResponseMessage putResponse = await cartClient.PutAsync($"/api/Carts/{cartId}/reduce-product/{productId}/{quantity}", content);
+                var putResponseBody = await putResponse.Content.ReadAsStreamAsync();
+                return await JsonSerializer.DeserializeAsync<CartItem?>(putResponseBody);
+            }
+            catch (HttpRequestException ex)
+            {
+                Console.WriteLine($"HTTP request error occurred while adding product to cart: {ex.Message}");
+                return null;
+            }
+            catch (JsonException ex)
+            {
+                Console.WriteLine($"JSON deserialization error occurred while adding product to cart: {ex.Message}");
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error occurred while adding product to cart: {ex.Message}");
+                throw;
+            }
+        }
+
         public async Task<List<CartItem?>> PutDeleteProductFromCartAsync(int cartId, int productId)
         {
             try
@@ -159,5 +191,7 @@ namespace NotYourAverageBicepShoppingApp.UIApp.APIClient
 
 
         }
+
+
     }
 }
