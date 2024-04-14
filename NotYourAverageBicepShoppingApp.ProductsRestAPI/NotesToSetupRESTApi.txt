@@ -34,6 +34,9 @@ Steps:
 Scaffold-DbContext 'Data Source=DESKTOP-DQUSH87; Initial Catalog=ProductsNYAB; Integrated Security=sspi; TrustServerCertificate=True;' Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
     - Refer to KeyTermsNote.txt for break down of each parameter
     - Once executed, the corresponding models and context will be scaffolded
+Scaffold-DbContext 'Data Source=DESKTOP-DQUSH87; Initial Catalog=NotYourAverageBicep; Integrated Security=sspi; TrustServerCertificate=True;' Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Tables "Carts", "Cart_Items", "Products" -force
+    - To scaffold specific entity tables
+    - To force and overwrite existing entity and context
 
 3. Remove OnConfiguring() method and No-Args Constructor in Context Class
     - By removing OnConfiguring() metho and utilize appsettings.json for configuration, it provides a more flexible, secure, and manageable approach 

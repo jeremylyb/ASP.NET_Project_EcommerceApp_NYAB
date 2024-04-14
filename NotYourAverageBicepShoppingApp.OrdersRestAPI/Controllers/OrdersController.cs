@@ -7,8 +7,9 @@ namespace NotYourAverageBicepShoppingApp.OrderRestAPI.Controllers
     [ApiController]
     public class OrdersController : Controller
     {
-        private readonly OrdersNyabContext _context;
-        public OrdersController(OrdersNyabContext context)
+        private readonly NotYourAverageBicepContext _context;
+
+        public OrdersController(NotYourAverageBicepContext context)
         {
             _context = context;
         }

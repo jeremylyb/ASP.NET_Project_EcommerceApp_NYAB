@@ -12,13 +12,13 @@ namespace NotYourAverageBicepShoppingApp.ProductRestApi.Controllers
     public class ProductsController : Controller
     {
 
-        private readonly ProductsNyabContext _context;
+        private readonly NotYourAverageBicepContext _context;
 
         /// <summary>
         /// Initializes a new instance of the ProductController class with the specified ProductsAcmeContext.
         /// </summary>
         /// <param name="context">The ProductsAcmeContext instance.</param>
-        public ProductsController(ProductsNyabContext context)
+        public ProductsController(NotYourAverageBicepContext context)
         {
             _context = context;
         }

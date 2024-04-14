@@ -70,7 +70,6 @@ namespace NotYourAverageBicepShoppingApp.UIApp.Controllers
             {
                 var cart = await _cartsClient.PostNewCartAsync();
                 HttpContext.Session.SetString("CartId", cart.CartId.ToString());
-                //return View(cart);
                 return RedirectToAction(nameof(ViewCart));
             }
             catch (HttpRequestException ex)

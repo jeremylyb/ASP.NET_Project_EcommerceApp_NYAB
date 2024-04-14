@@ -23,7 +23,7 @@ namespace NotYourAverageBicepShoppingApp.ProductsRestAPI
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddDbContext<NotYourAverageBicepShoppingApp.ProductsRestAPI.Models.ProductsNyabContext>(
+            builder.Services.AddDbContext<NotYourAverageBicepShoppingApp.ProductsRestAPI.Models.NotYourAverageBicepContext>(
                 options =>
                 {
                     options.UseSqlServer(builder.Configuration.GetConnectionString("CRUDConnection"));

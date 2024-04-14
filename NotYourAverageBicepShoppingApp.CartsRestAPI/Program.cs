@@ -18,19 +18,19 @@ namespace NotYourAverageBicepShoppingApp.CartsRestAPI
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddDbContext<NotYourAverageBicepShoppingApp.CartsRestAPI.Models.CartsNyabContext>(
+            builder.Services.AddDbContext<NotYourAverageBicepShoppingApp.CartsRestAPI.Models.NotYourAverageBicepContext>(
                 options =>
                 {
-                    options.UseSqlServer(builder.Configuration.GetConnectionString("CRUDConnectionCart"));
+                    options.UseSqlServer(builder.Configuration.GetConnectionString("CRUDConnection"));
                 });
 
 
 
-            builder.Services.AddDbContext<NotYourAverageBicepShoppingApp.CartsRestAPI.Models.ProductsNyabContext>(
-                options =>
-                {
-                    options.UseSqlServer(builder.Configuration.GetConnectionString("CRUDConnectionProduct"));
-                });
+            //builder.Services.AddDbContext<NotYourAverageBicepShoppingApp.CartsRestAPI.Models.NotYourAverageBicepContext>(
+            //    options =>
+            //    {
+            //        options.UseSqlServer(builder.Configuration.GetConnectionString("CRUDConnectionProduct"));
+            //    });
 
             builder.Services.AddControllers().AddJsonOptions(options =>
             {
