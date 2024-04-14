@@ -4,7 +4,6 @@ using System.Text.Json.Serialization;
 
 namespace NotYourAverageBicepShoppingApp.CartsRestAPI
 {
-
     public class Program
     {
         public static void Main(string[] args)
@@ -19,12 +18,11 @@ namespace NotYourAverageBicepShoppingApp.CartsRestAPI
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddDbContext<NotYourAverageBicepShoppingApp.CartsRestAPI.Models.NotYourAverageBicepContext>(
-                options =>
-                {
-                    //options.UseSqlServer(builder.Configuration.GetConnectionString("CRUDConnection"));
-                    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 
-                });
+            });
 
 
             builder.Services.AddControllers().AddJsonOptions(options =>
@@ -33,7 +31,6 @@ namespace NotYourAverageBicepShoppingApp.CartsRestAPI
                 options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
 
             });
-
 
             var app = builder.Build();
 
@@ -47,6 +44,7 @@ namespace NotYourAverageBicepShoppingApp.CartsRestAPI
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
+
 
             app.MapControllers();
 

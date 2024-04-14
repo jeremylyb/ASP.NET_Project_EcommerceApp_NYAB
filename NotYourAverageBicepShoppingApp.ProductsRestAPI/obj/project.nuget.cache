@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "D2wiwKtwMMCk9PM9ZHiXLy2iU1IoJDlgk8NWE421vEP6IrXlaMW2vUqGpe4A7SLrvJVmCXDKlr3xDE7BZVkYkQ==",
+  "dgSpecHash": "KzjTpU9GXRq7vVgC0ejugLxm0HbZ5Mv9lXMs7n0+UgvPmKi5rfk1W20hdnKs3Iy0iDsV/PIvZSerLG77tfZhlw==",
   "success": true,
   "projectFilePath": "C:\\Users\\jerem\\GitHub\\ASP.NET_Project_EcommerceApp\\NotYourAverageBicepShoppingApp.ProductsRestAPI\\NotYourAverageBicepShoppingApp.ProductsRestAPI.csproj",
   "expectedPackageFiles": [
@@ -117,6 +117,8 @@
     "C:\\Users\\jerem\\.nuget\\packages\\microsoft.win32.systemevents\\7.0.0\\microsoft.win32.systemevents.7.0.0.nupkg.sha512",
     "C:\\Users\\jerem\\.nuget\\packages\\mono.texttemplating\\2.3.1\\mono.texttemplating.2.3.1.nupkg.sha512",
     "C:\\Users\\jerem\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\jerem\\.nuget\\packages\\npgsql\\8.0.2\\npgsql.8.0.2.nupkg.sha512",
+    "C:\\Users\\jerem\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\8.0.2\\npgsql.entityframeworkcore.postgresql.8.0.2.nupkg.sha512",
     "C:\\Users\\jerem\\.nuget\\packages\\nuget.common\\6.9.1\\nuget.common.6.9.1.nupkg.sha512",
     "C:\\Users\\jerem\\.nuget\\packages\\nuget.configuration\\6.9.1\\nuget.configuration.6.9.1.nupkg.sha512",
     "C:\\Users\\jerem\\.nuget\\packages\\nuget.dependencyresolver.core\\6.9.1\\nuget.dependencyresolver.core.6.9.1.nupkg.sha512",

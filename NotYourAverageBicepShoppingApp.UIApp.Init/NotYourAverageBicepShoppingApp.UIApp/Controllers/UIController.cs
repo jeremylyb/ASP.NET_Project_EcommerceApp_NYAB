@@ -9,14 +9,13 @@ namespace NotYourAverageBicepShoppingApp.UIApp.Controllers
 
         private readonly IProductsClient _productsClient;
         private readonly ICartsClient _cartsClient;
-        private readonly IOrdersClient _ordersClient;
 
-        public UIController(IProductsClient productsClient, ICartsClient cartsClient, IOrdersClient orderClient)
+        public UIController(IProductsClient productsClient, ICartsClient cartsClient)
         {
             _productsClient = productsClient;
             _cartsClient = cartsClient;
-            _ordersClient = orderClient;
         }
+
         public IActionResult Index()
         {
             return View();
@@ -219,7 +218,6 @@ namespace NotYourAverageBicepShoppingApp.UIApp.Controllers
 
 
 
-
         //************************ Orders Related MVC Controller Methods ******************************************
         public IActionResult NewOrderBefore()
         {
@@ -233,7 +231,7 @@ namespace NotYourAverageBicepShoppingApp.UIApp.Controllers
                 string cartIdString = HttpContext.Session.GetString("CartId");
                 int.TryParse(cartIdString, out int cartId);
                 order.CartId = cartId;
-                order = await _ordersClient.PostOrders(order);
+                order = await _cartsClient.PostOrders(order);
                 var cartDetailsDTO = await _cartsClient.GetAllCartItemsForCartAsync(cartId);
                 var orderAndCartItems = new OrderAndCartItems() { Order = order, CartDetailsDTO = cartDetailsDTO };
                 await _cartsClient.PutDeleteAllProductsFromCartAsync(cartId);

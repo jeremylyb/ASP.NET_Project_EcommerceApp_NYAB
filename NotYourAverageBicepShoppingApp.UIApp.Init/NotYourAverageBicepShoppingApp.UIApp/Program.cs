@@ -39,23 +39,23 @@ namespace NotYourAverageBicepShoppingApp.UIApp
                                     .Accept
                                     .Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
-                    httpClient.BaseAddress = new Uri("https://localHost:7103");
+                    httpClient.BaseAddress = new Uri("https://localHost:7038");
 
                 });
             builder.Services.AddScoped<ICartsClient, CartsClient>();
 
 
-            builder.Services.AddHttpClient("OrdersApiClient",
-                httpClient =>
-                {
-                    httpClient.DefaultRequestHeaders
-                                    .Accept
-                                    .Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            //builder.Services.AddHttpClient("OrdersApiClient",
+            //    httpClient =>
+            //    {
+            //        httpClient.DefaultRequestHeaders
+            //                        .Accept
+            //                        .Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
-                    httpClient.BaseAddress = new Uri("https://localHost:7240");
+            //        httpClient.BaseAddress = new Uri("https://localHost:7240");
 
-                });
-            builder.Services.AddScoped<IOrdersClient, OrdersClient>();
+            //    });
+            //builder.Services.AddScoped<IOrdersClient, OrdersClient>();
 
 
             var app = builder.Build();

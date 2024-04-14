@@ -11,9 +11,9 @@ namespace NotYourAverageBicepShoppingApp.CartsRestAPI.Controllers
     {
         private readonly NotYourAverageBicepContext _context;
 
-        public CartsController(NotYourAverageBicepContext NYABContext)
+        public CartsController(NotYourAverageBicepContext context)
         {
-            _context =  NYABContext;
+            _context = context;
         }
 
 
@@ -25,7 +25,6 @@ namespace NotYourAverageBicepShoppingApp.CartsRestAPI.Controllers
                 Cart cart = new Cart() { CartItems = new List<CartItem>(), CartPrice = 0.0m };
                 _context.Carts.Add(cart);
                 var output = await _context.SaveChangesAsync();
-                Console.WriteLine($"LinesImpacted: { output}");
                 var result = this.CreatedAtAction("ReadCartByCartId", new { CartId = cart.CartId }, cart);
                 return this.Ok(cart);
             }
@@ -457,6 +456,43 @@ namespace NotYourAverageBicepShoppingApp.CartsRestAPI.Controllers
                 return StatusCode(500, $"Error: {ex.Message}");
             }
         }
-    }
 
+        [HttpPost("CreateOrder")]
+        public async Task<ActionResult<Order>> CreateOrder([FromBody] Order order)
+        {
+            try
+            {
+                _context.Orders.Add(order);
+                await _context.SaveChangesAsync();
+                return this.CreatedAtAction("ReadOrderByOrderId", new { orderId = order.OrderId }, order);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error: {ex.Message}");
+            }
+
+        }
+
+
+        [HttpGet("FindOrder/{orderId}")]
+        public async Task<ActionResult<Order>>? ReadOrderByOrderId(int orderId)
+        {
+            try
+            {
+                var foundOrder = await _context.Orders.FindAsync(orderId);
+                if (object.ReferenceEquals(foundOrder, null))
+                {
+                    return this.NotFound();
+
+                }
+                return this.Ok(foundOrder);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error: {ex.Message}");
+            }
+        }
+    }
 }
+
+

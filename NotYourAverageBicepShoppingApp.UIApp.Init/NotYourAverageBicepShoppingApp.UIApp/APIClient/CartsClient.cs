@@ -192,6 +192,25 @@ namespace NotYourAverageBicepShoppingApp.UIApp.APIClient
 
         }
 
+        public async Task<Order> PostOrders(Order order)
+        {
+            try
+            {
+                var client = _httpClientFactory.CreateClient("CartsApiClient");
+                string jsonOrder = JsonSerializer.Serialize(order, typeof(Order));
+                StringContent content = new StringContent(jsonOrder, System.Text.Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await client.PostAsync("/api/Carts/CreateOrder", content);
+                var responseBody = await response.Content.ReadAsStreamAsync();
+                return await JsonSerializer.DeserializeAsync<Order>(responseBody);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                throw;
+            }
+
+        }
+
 
     }
 }

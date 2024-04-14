@@ -219,5 +219,77 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "NotYourAverageBicepShoppingApp.CartsRestAPI.Controllers.CartsController",
+    "Method": "CreateOrder",
+    "RelativePath": "api/Carts/CreateOrder",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "order",
+        "Type": "NotYourAverageBicepShoppingApp.CartsRestAPI.Models.Order",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "NotYourAverageBicepShoppingApp.CartsRestAPI.Models.Order",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NotYourAverageBicepShoppingApp.CartsRestAPI.Controllers.CartsController",
+    "Method": "ReadOrderByOrderId",
+    "RelativePath": "api/Carts/FindOrder/{orderId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "NotYourAverageBicepShoppingApp.CartsRestAPI.Models.Order",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NotYourAverageBicepShoppingApp.CartsRestAPI.Controllers.WeatherForecastController",
+    "Method": "Get",
+    "RelativePath": "WeatherForecast",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[NotYourAverageBicepShoppingApp.CartsRestAPI.WeatherForecast, NotYourAverageBicepShoppingApp.CartsRestAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]

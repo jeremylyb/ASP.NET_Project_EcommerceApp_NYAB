@@ -14,10 +14,6 @@
       {
         "Name": "..\\NotYourAverageBicepShoppingApp.CartsRestAPI\\NotYourAverageBicepShoppingApp.CartsRestAPI.csproj",
         "Action": "Start"
-      },
-      {
-        "Name": "..\\NotYourAverageBicepShoppingApp.OrdersRestAPI\\NotYourAverageBicepShoppingApp.OrdersRestAPI.csproj",
-        "Action": "Start"
       }
     ]
   }

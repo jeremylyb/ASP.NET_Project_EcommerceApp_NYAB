@@ -11,6 +11,7 @@ namespace NotYourAverageBicepShoppingApp.UIApp.APIClient
         Task<CartItem?> PutAddProductToCartAsync(int cartId, int productId, int quantity);
         Task<CartItem?> PutReduceProductFromCartAsync(int cartId, int productId, int quantity);
         Task<List<CartItem>?> PutDeleteAllProductsFromCartAsync(int cartId);
+        Task<Order> PostOrders(Order order);
 
     }
 }
