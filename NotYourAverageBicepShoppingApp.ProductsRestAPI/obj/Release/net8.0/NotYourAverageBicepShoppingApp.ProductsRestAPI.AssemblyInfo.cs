@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NotYourAverageBicepShoppingApp.ProductsRestAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a69f91bd5dc9929be5f268dc8e273f47037b7326")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+26cfe2759f1e6aa5010606002da40d9a3b055016")]
 [assembly: System.Reflection.AssemblyProductAttribute("NotYourAverageBicepShoppingApp.ProductsRestAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NotYourAverageBicepShoppingApp.ProductsRestAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -4,8 +4,8 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project>
   <PropertyGroup>
-    <_PublishTargetUrl>C:\Users\jerem\GitHub\NYAB_SomeeDeploymentFolder</_PublishTargetUrl>
-    <History>True|2024-04-14T06:18:59.2069782Z;</History>
+    <_PublishTargetUrl>C:\Users\jerem\GitHub\NYAB_SomeeDeploymentFolder\UIApp</_PublishTargetUrl>
+    <History>True|2024-04-14T13:04:19.0789744Z;True|2024-04-14T20:58:44.9461083+08:00;True|2024-04-14T14:18:59.2069782+08:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>

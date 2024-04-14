@@ -251,3 +251,5 @@ C:\Users\jerem\GitHub\ASP.NET_Project_EcommerceApp\NotYourAverageBicepShoppingAp
 C:\Users\jerem\GitHub\ASP.NET_Project_EcommerceApp\NotYourAverageBicepShoppingApp.CartsRestAPI\obj\Debug\net8.0\NotYourAverageBicepShoppingApp.CartsRestAPI.pdb
 C:\Users\jerem\GitHub\ASP.NET_Project_EcommerceApp\NotYourAverageBicepShoppingApp.CartsRestAPI\obj\Debug\net8.0\NotYourAverageBicepShoppingApp.CartsRestAPI.genruntimeconfig.cache
 C:\Users\jerem\GitHub\ASP.NET_Project_EcommerceApp\NotYourAverageBicepShoppingApp.CartsRestAPI\obj\Debug\net8.0\ref\NotYourAverageBicepShoppingApp.CartsRestAPI.dll
+C:\Users\jerem\GitHub\ASP.NET_Project_EcommerceApp\NotYourAverageBicepShoppingApp.CartsRestAPI\bin\Debug\net8.0\Npgsql.dll
+C:\Users\jerem\GitHub\ASP.NET_Project_EcommerceApp\NotYourAverageBicepShoppingApp.CartsRestAPI\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll

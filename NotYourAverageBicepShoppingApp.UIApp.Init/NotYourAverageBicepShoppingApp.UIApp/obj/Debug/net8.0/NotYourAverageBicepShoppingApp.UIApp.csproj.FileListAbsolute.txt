@@ -13,7 +13,6 @@ C:\Users\jerem\GitHub\ASP.NET_Project_EcommerceApp\NotYourAverageBicepShoppingAp
 C:\Users\jerem\GitHub\ASP.NET_Project_EcommerceApp\NotYourAverageBicepShoppingApp.UIApp.Init\NotYourAverageBicepShoppingApp.UIApp\obj\Debug\net8.0\NotYourAverageBicepShoppingApp.UIApp.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\jerem\GitHub\ASP.NET_Project_EcommerceApp\NotYourAverageBicepShoppingApp.UIApp.Init\NotYourAverageBicepShoppingApp.UIApp\obj\Debug\net8.0\NotYourAverageBicepShoppingApp.UIApp.RazorAssemblyInfo.cache
 C:\Users\jerem\GitHub\ASP.NET_Project_EcommerceApp\NotYourAverageBicepShoppingApp.UIApp.Init\NotYourAverageBicepShoppingApp.UIApp\obj\Debug\net8.0\NotYourAverageBicepShoppingApp.UIApp.RazorAssemblyInfo.cs
-C:\Users\jerem\GitHub\ASP.NET_Project_EcommerceApp\NotYourAverageBicepShoppingApp.UIApp.Init\NotYourAverageBicepShoppingApp.UIApp\obj\Debug\net8.0\NotYourAverageBicepShoppingApp.UIApp.sourcelink.json
 C:\Users\jerem\GitHub\ASP.NET_Project_EcommerceApp\NotYourAverageBicepShoppingApp.UIApp.Init\NotYourAverageBicepShoppingApp.UIApp\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\jerem\GitHub\ASP.NET_Project_EcommerceApp\NotYourAverageBicepShoppingApp.UIApp.Init\NotYourAverageBicepShoppingApp.UIApp\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\jerem\GitHub\ASP.NET_Project_EcommerceApp\NotYourAverageBicepShoppingApp.UIApp.Init\NotYourAverageBicepShoppingApp.UIApp\obj\Debug\net8.0\staticwebassets\msbuild.NotYourAverageBicepShoppingApp.UIApp.Microsoft.AspNetCore.StaticWebAssets.props

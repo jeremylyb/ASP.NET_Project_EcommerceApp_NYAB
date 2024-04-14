@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\jerem\GitHub\NYAB_SomeeDeploymentFolder\ProductsRESTAPI</_PublishTargetUrl>
-    <History>True|2024-04-14T06:21:15.3865190Z;</History>
+    <History>True|2024-04-14T13:04:11.1759027Z;True|2024-04-14T20:57:53.7336528+08:00;True|2024-04-14T14:21:15.3865190+08:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>
