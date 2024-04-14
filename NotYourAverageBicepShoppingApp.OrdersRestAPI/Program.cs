@@ -19,7 +19,8 @@ namespace NotYourAverageBicepShoppingApp.OrdersRestAPI
             builder.Services.AddDbContext<NotYourAverageBicepShoppingApp.OrdersRestAPI.Models.NotYourAverageBicepContext>(
             options =>
             {
-                options.UseSqlServer(builder.Configuration.GetConnectionString("CRUDConnection"));
+                //options.UseSqlServer(builder.Configuration.GetConnectionString("CRUDConnection"));
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
 
             var app = builder.Build();

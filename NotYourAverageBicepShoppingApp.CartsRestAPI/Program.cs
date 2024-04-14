@@ -21,16 +21,11 @@ namespace NotYourAverageBicepShoppingApp.CartsRestAPI
             builder.Services.AddDbContext<NotYourAverageBicepShoppingApp.CartsRestAPI.Models.NotYourAverageBicepContext>(
                 options =>
                 {
-                    options.UseSqlServer(builder.Configuration.GetConnectionString("CRUDConnection"));
+                    //options.UseSqlServer(builder.Configuration.GetConnectionString("CRUDConnection"));
+                    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+
                 });
 
-
-
-            //builder.Services.AddDbContext<NotYourAverageBicepShoppingApp.CartsRestAPI.Models.NotYourAverageBicepContext>(
-            //    options =>
-            //    {
-            //        options.UseSqlServer(builder.Configuration.GetConnectionString("CRUDConnectionProduct"));
-            //    });
 
             builder.Services.AddControllers().AddJsonOptions(options =>
             {

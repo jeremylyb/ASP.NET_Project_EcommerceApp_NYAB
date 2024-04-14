@@ -1,0 +1,7 @@
+C:\Users\jerem\GitHub\ASP.NET_Project_EcommerceApp\NotYourAverageBicepShoppingApp.UIApp.Init\NotYourAverageBicepShoppingApp.UIApp\obj\Release\net8.0\PubTmp\Out\NotYourAverageBicepShoppingApp.UIApp.exe
+C:\Users\jerem\GitHub\ASP.NET_Project_EcommerceApp\NotYourAverageBicepShoppingApp.UIApp.Init\NotYourAverageBicepShoppingApp.UIApp\obj\Release\net8.0\PubTmp\Out\appsettings.Development.json
+C:\Users\jerem\GitHub\ASP.NET_Project_EcommerceApp\NotYourAverageBicepShoppingApp.UIApp.Init\NotYourAverageBicepShoppingApp.UIApp\obj\Release\net8.0\PubTmp\Out\appsettings.json
+C:\Users\jerem\GitHub\ASP.NET_Project_EcommerceApp\NotYourAverageBicepShoppingApp.UIApp.Init\NotYourAverageBicepShoppingApp.UIApp\obj\Release\net8.0\PubTmp\Out\NotYourAverageBicepShoppingApp.UIApp.dll
+C:\Users\jerem\GitHub\ASP.NET_Project_EcommerceApp\NotYourAverageBicepShoppingApp.UIApp.Init\NotYourAverageBicepShoppingApp.UIApp\obj\Release\net8.0\PubTmp\Out\NotYourAverageBicepShoppingApp.UIApp.deps.json
+C:\Users\jerem\GitHub\ASP.NET_Project_EcommerceApp\NotYourAverageBicepShoppingApp.UIApp.Init\NotYourAverageBicepShoppingApp.UIApp\obj\Release\net8.0\PubTmp\Out\NotYourAverageBicepShoppingApp.UIApp.runtimeconfig.json
+C:\Users\jerem\GitHub\ASP.NET_Project_EcommerceApp\NotYourAverageBicepShoppingApp.UIApp.Init\NotYourAverageBicepShoppingApp.UIApp\obj\Release\net8.0\PubTmp\Out\NotYourAverageBicepShoppingApp.UIApp.pdb
