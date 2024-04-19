@@ -8,6 +8,21 @@
 - The Products API enables CRUD operations on products, while the Carts API handles cart management, including adding, removing, and clearing items, as well as checkout functionality. Orders are managed through a dedicated API, associating them with carts and customer names.
 - The UI client provides an intuitive interface for users to interact with these services, ensuring data integrity and synchronization across the system.
 - Overall, NYAB offers a streamlined and efficient shopping experience for both customers and administrators.
+  
+## Project Outcome
+#### Landing Page
+![image](https://github.com/jeremylyb/ASP.NET_Project_EcommerceApp_NYAB/assets/96461868/59f7d87e-b76c-4f22-93cd-88f6e91450d6)
+#### Product List
+![image](https://github.com/jeremylyb/ASP.NET_Project_EcommerceApp_NYAB/assets/96461868/9a2034d1-2226-48c0-bfcb-49f585760f23)
+![image](https://github.com/jeremylyb/ASP.NET_Project_EcommerceApp_NYAB/assets/96461868/34b22e71-3af9-441a-9f31-7dde7eae9942)
+
+#### Cart
+![image](https://github.com/jeremylyb/ASP.NET_Project_EcommerceApp_NYAB/assets/96461868/d00b1b51-c566-491b-a188-4f469afb1ee5)
+
+#### Checkout
+![image](https://github.com/jeremylyb/ASP.NET_Project_EcommerceApp_NYAB/assets/96461868/385d7218-22ff-44a1-89f0-198964cbe141)
+![image](https://github.com/jeremylyb/ASP.NET_Project_EcommerceApp_NYAB/assets/96461868/7e7e50e9-b42d-4bcd-829d-3d1cc1754d2e)
+
 
 ## Project Timeline
 26 March 2024: Sprint1 Completion - App Fuctionality
